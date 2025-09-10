@@ -1,0 +1,4 @@
+input: "/home/asmirnov/dissertation/pipelines/inputs/list_of_available_db.csv"
+output: "/home/asmirnov/dissertation_new/tcr_pred_data"
+path_to_scripts: "/home/asmirnov/dissertation/scripts"
+path_to_converter: "/home/asmirnov/dissertation/tools/SequenceToSDF"

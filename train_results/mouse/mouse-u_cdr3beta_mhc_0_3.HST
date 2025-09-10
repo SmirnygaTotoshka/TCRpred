@@ -1,0 +1,88 @@
+Run of Z:\home\stotoshka\Documents\RNIMU\dissertation_new\PASS\work\fd\51eb07042741cbc7b6b2f716305768\OLMPASSdoMNABase.exe Z:\home\stotoshka\Documents\RNIMU\dissertation_new\PASS\work\fd\51eb07042741cbc7b6b2f716305768\config.txt
+
+  MSAR Base is created 8/28/2025 3:14:28 PM
+
+Data from Z:\home\stotoshka\Documents\RNIMU\dissertation_new\PASS\work\fd\51eb07042741cbc7b6b2f716305768\mouse-u_cdr3beta_mhc_0_train.sdf are added to MSAR Base.
+Activity Field  :  Activity
+
+  Begin         :  8/28/2025 3:14:28 PM
+
+  End           :  8/28/2025 3:14:47 PM
+
+Data from Z:\home\stotoshka\Documents\RNIMU\dissertation_new\PASS\work\fd\51eb07042741cbc7b6b2f716305768\mouse-u_cdr3beta_mhc_0_train.sdf were added to MSAR Base.
+  5447 of 5447 Substances were added to MSAR Base.
+  4204 new Substances were added to MSAR Base.
+  4866 new Activity Data were added to MSAR Base.
+
+  Adding new Data time: 0:00:19.149.
+
+  MSAR Base mouse-u_cdr3beta_mhc_0_3.MSAR training.
+3	 Maximal Length of N-grams 
+4204	 Substances 
+641	 Descriptors 
+21	 Activity Types 
+0	 Selected Activity Types 
+0.0000	 Average IAP
+
+  Begin         :  8/28/2025 3:14:48 PM
+
+   No	 Training 	N	IAP	MAP	NN	NP	Prec.	TP	TN	FP	FN	Activity Type
+  1	 Ok       	2404	0.7934	0.7239	1800	2404	0.7779	1740	1303	497	664	H2-Db
+  2	 Ok       	1324	0.7850	0.6980	2880	1324	0.5152	924	2010	870	400	H2-Kb
+  3	 Ok       	138	0.8107	0.7235	4066	138	0.0815	100	2942	1124	38	H2-Kd
+  4	 Ok       	521	0.7311	0.6705	3683	521	0.2235	349	2469	1214	172	H2-IAb alpha
+  5	 Ok       	10	0.8078	0.6691	4194	10	0.0048	7	2806	1388	3	H2-IAa beta
+  6	 Ok       	3	0.8653	0.6177	4201	3	0.0012	2	2595	1606	1	H2-IEk alpha
+  7	 Failed   	4	0.6258	0.5282	4200	4	0.0011	2	2218	1982	2	H2-IAd alpha
+  8	 Ok       	32	0.8510	0.7833	4172	32	0.0270	25	3268	904	7	H2-Ld
+  9	 Failed   	4	0.6947	0.5743	4200	4	0.0013	2	2412	1788	2	H2-IAk alpha
+  10	 Ok       	3	0.8653	0.6177	4201	3	0.0012	2	2595	1606	1	H2-IEk beta
+  11	 Failed   	4	0.6258	0.5282	4200	4	0.0011	2	2218	1982	2	H2-IAd beta
+  12	 Ok       	66	0.7956	0.7112	4138	66	0.0378	47	2943	1195	19	H2-IAb beta
+  13	 Ok       	171	0.7162	0.6446	4033	171	0.0714	110	2600	1433	61	H2-IAg7 alpha
+  14	 Ok       	171	0.7162	0.6446	4033	171	0.0714	110	2600	1433	61	H2-IAg7 beta
+  15	 Failed   	4	0.6947	0.5743	4200	4	0.0013	2	2412	1788	2	H2-IAk beta
+
+  End           :  8/28/2025 3:14:53 PM
+  Training MSAR Base time: 0:00:04.994.
+
+11	 Selected Activity Types 
+0.7943	 Average IAP
+
+
+  MSAR Base mouse-u_cdr3beta_mhc_0_3.MSAR validation.
+3	 Maximal Length of N-grams 
+4204	 Substances 
+641	 Descriptors 
+21	 Activity Types 
+11	 Selected Activity Types 
+0.7943	 Average IAP
+
+  Begin         :  8/28/2025 3:14:53 PM
+
+  No	Check	N	IAP	5-F CV	MAP	NN	NP	Prec.	TP	TN	FP	FN	Activity Type
+  1	 Ok    	2404	0.7934	0.7953	0.7253	1800	2404	0.7791	1744	1306	494	660	H2-Db
+  2	 Ok    	10	0.8078	0.8086	0.6714	4194	10	0.0048	7	2816	1378	3	H2-IAa beta
+  3	 Ok    	521	0.7311	0.7336	0.6730	3683	521	0.2255	351	2479	1204	170	H2-IAb alpha
+  4	 Ok    	66	0.7956	0.7902	0.7174	4138	66	0.0389	47	2969	1169	19	H2-IAb beta
+  5	 Ok    	171	0.7162	0.7007	0.6385	4033	171	0.0697	109	2575	1458	62	H2-IAg7 alpha
+  6	 Ok    	171	0.7162	0.7007	0.6385	4033	171	0.0697	109	2575	1458	62	H2-IAg7 beta
+  7	 Ok    	3	0.8653	0.8857	0.6248	4201	3	0.0012	2	2625	1576	1	H2-IEk alpha
+  8	 Ok    	3	0.8653	0.8857	0.6248	4201	3	0.0012	2	2625	1576	1	H2-IEk beta
+  9	 Ok    	1324	0.7850	0.7864	0.7023	2880	1324	0.5203	930	2023	857	394	H2-Kb
+  10	 Ok    	138	0.8107	0.8114	0.7232	4066	138	0.0815	100	2941	1125	38	H2-Kd
+  11	 Ok    	32	0.8510	0.8320	0.7703	4172	32	0.0251	25	3214	958	7	H2-Ld
+
+  End           :  8/28/2025 3:15:01 PM
+  Validation MSAR Base time: 0:00:08.738.
+
+  11	 Selected Activity Types 
+  11	 Validated Activity Types 
+  11	 Successfully Validated Activity Types 
+  0.7943	 Average IAP
+  0.7937	5-Fold Average IAP
+
+
+  MSAS Base is saved 8/28/2025 3:15:16 PM
+
+MSAR Base Z:\home\stotoshka\Documents\RNIMU\dissertation_new\PASS\work\fd\51eb07042741cbc7b6b2f716305768\mouse-u_cdr3beta_mhc_0_3.MSAR is closed.  8/28/2025 3:15:16 PM
