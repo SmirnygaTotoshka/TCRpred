@@ -1,0 +1,212 @@
+Aug-14 15:01:04.766 [main] DEBUG nextflow.cli.Launcher - Setting https proxy: ProxyConfig[protocol=https; host=proxy; port=3128]
+Aug-14 15:01:04.824 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf -profile cluster
+Aug-14 15:01:04.910 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 25.04.2
+Aug-14 15:01:04.965 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/asmirnov/.nextflow/plugins; core-plugins: nf-amazon@2.15.0,nf-azure@1.16.0,nf-cloudcache@0.4.3,nf-codecommit@0.2.3,nf-console@1.2.1,nf-google@1.21.0,nf-k8s@1.0.0,nf-tower@1.11.2,nf-wave@1.12.1
+Aug-14 15:01:05.004 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Aug-14 15:01:05.005 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Aug-14 15:01:05.011 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Aug-14 15:01:05.025 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Aug-14 15:01:05.078 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /home/asmirnov/dissertation_new/TCR_PRED_DATA/nextflow.config
+Aug-14 15:01:05.083 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/asmirnov/dissertation_new/TCR_PRED_DATA/nextflow.config
+Aug-14 15:01:05.170 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/asmirnov/.nextflow/secrets/store.json
+Aug-14 15:01:05.176 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@77ee25f1] - activable => nextflow.secret.LocalSecretsProvider@77ee25f1
+Aug-14 15:01:05.224 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `cluster`
+Aug-14 15:01:06.073 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [cluster]
+Aug-14 15:01:06.120 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 by global default
+Aug-14 15:01:06.143 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [mad_noyce] DSL2 - revision: d0fd39dfcc
+Aug-14 15:01:06.147 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Aug-14 15:01:06.147 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Aug-14 15:01:06.215 [main] DEBUG nextflow.Session - Session UUID: 8aa69ca5-cc83-469a-99d7-14e5390be4cb
+Aug-14 15:01:06.215 [main] DEBUG nextflow.Session - Run name: mad_noyce
+Aug-14 15:01:06.216 [main] DEBUG nextflow.Session - Executor pool size: 2
+Aug-14 15:01:06.225 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Aug-14 15:01:06.232 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Aug-14 15:01:06.284 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 25.04.2 build 5947
+  Created: 13-05-2025 21:58 UTC (14-05-2025 00:58 MSK)
+  System: Linux 5.4.0-165-generic
+  Runtime: Groovy 4.0.26 on OpenJDK 64-Bit Server VM 23.0.2-internal-adhoc.conda.src
+  Encoding: UTF-8 (ANSI_X3.4-1968)
+  Process: 591545@frontend-1-2-13 [10.64.12.13]
+  CPUs: 2 - Mem: 16 GB (14.9 GB) - Swap: 0 (0)
+Aug-14 15:01:06.413 [main] DEBUG nextflow.Session - Work-dir: /home/asmirnov/dissertation_new/TCR_PRED_DATA/work [ceph]
+Aug-14 15:01:06.414 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /home/asmirnov/dissertation_new/TCR_PRED_DATA/bin
+Aug-14 15:01:06.432 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Aug-14 15:01:06.458 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Aug-14 15:01:06.466 [main] DEBUG nextflow.Session - Observer factory (v2): LinObserverFactory
+Aug-14 15:01:06.501 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Aug-14 15:01:06.515 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 3; maxThreads: 1000
+Aug-14 15:01:06.916 [main] DEBUG nextflow.Session - Session start
+Aug-14 15:01:08.394 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Aug-14 15:01:08.595 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name FETCH
+Aug-14 15:01:08.613 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Aug-14 15:01:08.614 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Aug-14 15:01:08.626 [main] DEBUG nextflow.executor.Executor - [warm up] executor > slurm
+Aug-14 15:01:08.636 [main] DEBUG n.processor.TaskPollingMonitor - Creating task monitor for executor 'slurm' > capacity: 10; pollInterval: 5s; dumpInterval: 5m 
+Aug-14 15:01:08.638 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: slurm)
+Aug-14 15:01:08.641 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+Aug-14 15:01:08.672 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'FETCH': maxForks=0; fair=false; array=0
+Aug-14 15:01:08.741 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name CLEAN
+Aug-14 15:01:08.744 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Aug-14 15:01:08.745 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Aug-14 15:01:08.746 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'CLEAN': maxForks=0; fair=false; array=0
+Aug-14 15:01:08.776 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name MERGE
+Aug-14 15:01:08.777 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MERGE` matches process MERGE
+Aug-14 15:01:08.783 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Aug-14 15:01:08.783 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Aug-14 15:01:08.784 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE': maxForks=0; fair=false; array=0
+Aug-14 15:01:08.793 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CALC_STAT` matches process CALC_STAT
+Aug-14 15:01:08.796 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Aug-14 15:01:08.797 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Aug-14 15:01:08.798 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'CALC_STAT': maxForks=0; fair=false; array=0
+Aug-14 15:01:08.848 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name SPLIT_SAMPLE
+Aug-14 15:01:08.858 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Aug-14 15:01:08.858 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Aug-14 15:01:08.859 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'SPLIT_SAMPLE': maxForks=0; fair=false; array=0
+Aug-14 15:01:08.862 [main] DEBUG nextflow.processor.TaskProcessor - Creating *combiner* operator for each param(s) at index(es): [1]
+Aug-14 15:01:08.877 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CONVERT` matches process CONVERT
+Aug-14 15:01:08.880 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Aug-14 15:01:08.880 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Aug-14 15:01:08.881 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'CONVERT': maxForks=0; fair=false; array=0
+Aug-14 15:01:08.887 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: CONVERT, FETCH, SPLIT_SAMPLE, MERGE, CLEAN, CALC_STAT
+Aug-14 15:01:08.891 [main] DEBUG nextflow.Session - Igniting dataflow network (11)
+Aug-14 15:01:08.942 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > FETCH
+Aug-14 15:01:08.942 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > CLEAN
+Aug-14 15:01:08.942 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE
+Aug-14 15:01:08.942 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > CALC_STAT
+Aug-14 15:01:08.956 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > SPLIT_SAMPLE
+Aug-14 15:01:08.956 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > SPLIT_SAMPLE
+Aug-14 15:01:08.956 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > CONVERT
+Aug-14 15:01:08.957 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_2d31df1a6fed5548: /home/asmirnov/dissertation_new/TCR_PRED_DATA/main.nf
+Aug-14 15:01:08.958 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Aug-14 15:01:08.958 [main] DEBUG nextflow.Session - Session await
+Aug-14 15:01:09.110 [Actor Thread 7] INFO  nextflow.conda.CondaCache - Creating env using conda: /home/asmirnov/dissertation_new/TCR_PRED_DATA/envs/tcr_pred.yml [cache /home/asmirnov/dissertation_new/TCR_PRED_DATA/work/conda/env-384e47e8e9c25180-7b18e02b2d92ef20ffd5fb981cc0aac9]
+Aug-14 15:06:13.701 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > No more task to compute -- The following nodes are still active:
+[process] FETCH
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] CLEAN
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] MERGE
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] CALC_STAT
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] SPLIT_SAMPLE
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: __$eachinparam<1>
+  port 2: (cntrl) -     ; channel: $
+
+[process] CONVERT
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: csv_table
+  port 1: (cntrl) -     ; channel: $
+
+Aug-14 15:07:42.258 [Actor Thread 7] DEBUG nextflow.conda.CondaCache - 'conda' create complete env=/home/asmirnov/dissertation_new/TCR_PRED_DATA/envs/tcr_pred.yml path=/home/asmirnov/dissertation_new/TCR_PRED_DATA/work/conda/env-384e47e8e9c25180-7b18e02b2d92ef20ffd5fb981cc0aac9
+Aug-14 15:07:42.564 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FETCH (IEDB) > jobId: 887210; workDir: /home/asmirnov/dissertation_new/TCR_PRED_DATA/work/f7/22c8759ef5805a98f15117e3fd396c
+Aug-14 15:07:42.565 [Task submitter] INFO  nextflow.Session - [f7/22c875] Submitted process > FETCH (IEDB)
+Aug-14 15:07:42.604 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FETCH (CEDAR) > jobId: 887211; workDir: /home/asmirnov/dissertation_new/TCR_PRED_DATA/work/04/998ba68692c13508d1c9c08f3d672e
+Aug-14 15:07:42.604 [Task submitter] INFO  nextflow.Session - [04/998ba6] Submitted process > FETCH (CEDAR)
+Aug-14 15:07:42.628 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FETCH (VDJdb) > jobId: 887212; workDir: /home/asmirnov/dissertation_new/TCR_PRED_DATA/work/ed/658b729cddf66e2308c177b3939a05
+Aug-14 15:07:42.628 [Task submitter] INFO  nextflow.Session - [ed/658b72] Submitted process > FETCH (VDJdb)
+Aug-14 15:07:42.654 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FETCH (McPAS) > jobId: 887213; workDir: /home/asmirnov/dissertation_new/TCR_PRED_DATA/work/55/011cf190fba16bdcdd9746cb7e06e8
+Aug-14 15:07:42.654 [Task submitter] INFO  nextflow.Session - [55/011cf1] Submitted process > FETCH (McPAS)
+Aug-14 15:07:42.681 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FETCH (MIRA) > jobId: 887214; workDir: /home/asmirnov/dissertation_new/TCR_PRED_DATA/work/fc/8af8f934faf4490134449b7c8470bc
+Aug-14 15:07:42.681 [Task submitter] INFO  nextflow.Session - [fc/8af8f9] Submitted process > FETCH (MIRA)
+Aug-14 15:07:42.711 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FETCH (PIRD) > jobId: 887215; workDir: /home/asmirnov/dissertation_new/TCR_PRED_DATA/work/e1/716ad90d16e20401e91906e066fedf
+Aug-14 15:07:42.713 [Task submitter] INFO  nextflow.Session - [e1/716ad9] Submitted process > FETCH (PIRD)
+Aug-14 15:07:48.804 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 887210; id: 1; name: FETCH (IEDB); status: COMPLETED; exit: 2; error: -; workDir: /home/asmirnov/dissertation_new/TCR_PRED_DATA/work/f7/22c8759ef5805a98f15117e3fd396c started: 1755173264034; exited: 2025-08-14T12:07:45.277822841Z; ]
+Aug-14 15:07:48.807 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Aug-14 15:07:48.832 [TaskFinalizer-1] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=FETCH (IEDB); work-dir=/home/asmirnov/dissertation_new/TCR_PRED_DATA/work/f7/22c8759ef5805a98f15117e3fd396c
+  error [nextflow.exception.ProcessFailedException]: Process `FETCH (IEDB)` terminated with an error exit status (2)
+Aug-14 15:07:48.910 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 887211; id: 2; name: FETCH (CEDAR); status: COMPLETED; exit: 2; error: -; workDir: /home/asmirnov/dissertation_new/TCR_PRED_DATA/work/04/998ba68692c13508d1c9c08f3d672e started: 1755173264167; exited: 2025-08-14T12:07:45.265822777Z; ]
+Aug-14 15:07:48.965 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 887212; id: 3; name: FETCH (VDJdb); status: COMPLETED; exit: 2; error: -; workDir: /home/asmirnov/dissertation_new/TCR_PRED_DATA/work/ed/658b729cddf66e2308c177b3939a05 started: 1755173264249; exited: 2025-08-14T12:07:45.266342461Z; ]
+Aug-14 15:07:49.004 [TaskFinalizer-1] ERROR nextflow.processor.TaskProcessor - Error executing process > 'FETCH (IEDB)'
+
+Caused by:
+  Process `FETCH (IEDB)` terminated with an error exit status (2)
+
+
+Command executed:
+
+  python /home/asmirnov/dissertation/scripts/TCR-pred/TCR-pred/tcr_data_acquire.py  mysql -s 81.177.141.179 -u iedb_svc -p K0strom@1 -d IEDB -o ${PWD}
+
+Command exit status:
+  2
+
+Command output:
+  (empty)
+
+Command error:
+  python: can't open file '/home/asmirnov/dissertation/scripts/TCR-pred/TCR-pred/tcr_data_acquire.py': [Errno 2] No such file or directory
+
+Work dir:
+  /home/asmirnov/dissertation_new/TCR_PRED_DATA/work/f7/22c8759ef5805a98f15117e3fd396c
+
+Tip: you can replicate the issue by changing to the process work dir and entering the command `bash .command.run`
+Aug-14 15:07:49.007 [TaskFinalizer-3] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=FETCH (VDJdb); work-dir=/home/asmirnov/dissertation_new/TCR_PRED_DATA/work/ed/658b729cddf66e2308c177b3939a05
+  error [nextflow.exception.ProcessFailedException]: Process `FETCH (VDJdb)` terminated with an error exit status (2)
+Aug-14 15:07:49.008 [TaskFinalizer-2] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=FETCH (CEDAR); work-dir=/home/asmirnov/dissertation_new/TCR_PRED_DATA/work/04/998ba68692c13508d1c9c08f3d672e
+  error [nextflow.exception.ProcessFailedException]: Process `FETCH (CEDAR)` terminated with an error exit status (2)
+Aug-14 15:07:49.034 [TaskFinalizer-1] DEBUG nextflow.Session - Session aborted -- Cause: Process `FETCH (IEDB)` terminated with an error exit status (2)
+Aug-14 15:07:49.040 [TaskFinalizer-1] DEBUG nextflow.Session - The following nodes are still active:
+[process] CLEAN
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] MERGE
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] CALC_STAT
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] SPLIT_SAMPLE
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: __$eachinparam<1>
+  port 2: (cntrl) -     ; channel: $
+
+[process] CONVERT
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: csv_table
+  port 1: (cntrl) -     ; channel: $
+
+Aug-14 15:07:49.058 [main] DEBUG nextflow.Session - Session await > all processes finished
+Aug-14 15:07:49.058 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Aug-14 15:07:49.065 [main] WARN  n.processor.TaskPollingMonitor - Killing running tasks (3)
+Aug-14 15:07:49.119 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=3; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=3; succeedDuration=0ms; failedDuration=28.5s; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=6; peakCpus=12; peakMemory=192 GB; ]
+Aug-14 15:07:49.348 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 887213; id: 4; name: FETCH (McPAS); status: COMPLETED; exit: 2; error: -; workDir: /home/asmirnov/dissertation_new/TCR_PRED_DATA/work/55/011cf190fba16bdcdd9746cb7e06e8 started: 1755173264349; exited: 2025-08-14T12:07:45.266342461Z; ]
+Aug-14 15:07:49.352 [Task monitor] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=FETCH (McPAS); work-dir=/home/asmirnov/dissertation_new/TCR_PRED_DATA/work/55/011cf190fba16bdcdd9746cb7e06e8
+  error [java.util.concurrent.RejectedExecutionException]: Task java.util.concurrent.FutureTask@5ad317b9[Not completed, task = java.util.concurrent.Executors$RunnableAdapter@1f340d9e[Wrapped task = nextflow.processor.TaskPollingMonitor$$Lambda/0x00007f010b4b4628@300ebab3]] rejected from java.util.concurrent.ThreadPoolExecutor@5af2af12[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3]
+Aug-14 15:07:49.392 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Aug-14 15:07:49.393 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 887214; id: 6; name: FETCH (MIRA); status: COMPLETED; exit: 2; error: -; workDir: /home/asmirnov/dissertation_new/TCR_PRED_DATA/work/fc/8af8f934faf4490134449b7c8470bc started: 1755173264401; exited: 2025-08-14T12:07:45.266342461Z; ]
+Aug-14 15:07:49.398 [Task monitor] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=FETCH (MIRA); work-dir=/home/asmirnov/dissertation_new/TCR_PRED_DATA/work/fc/8af8f934faf4490134449b7c8470bc
+  error [java.util.concurrent.RejectedExecutionException]: Task java.util.concurrent.FutureTask@2a27a72e[Not completed, task = java.util.concurrent.Executors$RunnableAdapter@287962d1[Wrapped task = nextflow.processor.TaskPollingMonitor$$Lambda/0x00007f010b4b4628@5c8e79a0]] rejected from java.util.concurrent.ThreadPoolExecutor@5af2af12[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3]
+Aug-14 15:07:49.437 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 887215; id: 5; name: FETCH (PIRD); status: COMPLETED; exit: 2; error: -; workDir: /home/asmirnov/dissertation_new/TCR_PRED_DATA/work/e1/716ad90d16e20401e91906e066fedf started: 1755173264489; exited: 2025-08-14T12:07:45.266342461Z; ]
+Aug-14 15:07:49.438 [Task monitor] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=FETCH (PIRD); work-dir=/home/asmirnov/dissertation_new/TCR_PRED_DATA/work/e1/716ad90d16e20401e91906e066fedf
+  error [java.util.concurrent.RejectedExecutionException]: Task java.util.concurrent.FutureTask@222115b2[Not completed, task = java.util.concurrent.Executors$RunnableAdapter@6ec1b621[Wrapped task = nextflow.processor.TaskPollingMonitor$$Lambda/0x00007f010b4b4628@d4d2ec2]] rejected from java.util.concurrent.ThreadPoolExecutor@5af2af12[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3]
+Aug-14 15:07:49.439 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: slurm) - terminating tasks monitor poll loop
+Aug-14 15:07:49.446 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

@@ -1,0 +1,9 @@
+task_id	hash	native_id	name	status	exit	submit	duration	realtime	%cpu	peak_rss	peak_vmem	rchar	wchar
+2	3d/a25120	887130	GENERATE_TRAIN_CONFIG (human-ba_epitope_HLA-A0101_0_4)	COMPLETED	0	2025-08-14 14:09:33.996	5s	66ms	14.3%	1.1 MB	3.8 MB	115.4 KB	1.4 KB
+1	cc/d84850	887131	GENERATE_TRAIN_CONFIG (human-ba_epitope_HLA-A0101_0_3)	COMPLETED	0	2025-08-14 14:09:34.044	5.3s	27ms	24.8%	1.1 MB	3.8 MB	115.4 KB	1.4 KB
+4	d3/6cc66e	887132	GENERATE_TRAIN_CONFIG (human-ba_epitope_HLA-A0101_0_6)	COMPLETED	0	2025-08-14 14:09:34.075	5.5s	89ms	28.7%	1.1 MB	3.8 MB	115.3 KB	1.4 KB
+3	3a/0dd65f	887133	GENERATE_TRAIN_CONFIG (human-ba_epitope_HLA-A0101_0_5)	COMPLETED	0	2025-08-14 14:09:34.110	5.9s	243ms	3.9%	1.1 MB	3.8 MB	115.4 KB	1.4 KB
+5	4a/9976df	887134	TRAIN (human-ba_epitope_HLA-A0101_0_4)	FAILED	126	2025-08-14 14:09:39.248	9.2s	5s	-	-	-	-	-
+6	90/bba1d3	887135	TRAIN (human-ba_epitope_HLA-A0101_0_3)	FAILED	126	2025-08-14 14:09:39.472	9.2s	4.9s	-	-	-	-	-
+7	f2/cf8285	887136	TRAIN (human-ba_epitope_HLA-A0101_0_6)	FAILED	126	2025-08-14 14:09:40.030	8.7s	4.9s	-	-	-	-	-
+8	3c/a68575	887137	TRAIN (human-ba_epitope_HLA-A0101_0_5)	ABORTED	-	2025-08-14 14:09:40.484	-	-	-	-	-	-	-

@@ -1,0 +1,60 @@
+2025-08-13 18:53:18	8.7s	tiny_hopper	OK	465752192d762c9773d1b7161e2bc3a9	69423705-aabb-4899-8697-a8f05e545185	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-13 18:55:07	8.9s	prickly_edison	OK	32f751a4433ef7ed141f6c030e290df9	cf91e2d2-ef35-4d56-83e4-c4c76fdc44f3	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-13 18:55:44	8.6s	big_lamarr	OK	4e5151470c62e006a2b8c899ed84827c	158ee785-a073-40f2-a7ad-52e947d05fea	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-13 18:59:14	10.3s	nauseous_pauling	ERR	d580180e017f6a42aec9037e833204b1	20499e86-d6a8-4a6b-87fc-228f7898af6d	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-13 19:00:06	9s	cranky_rutherford	ERR	28623816616c0b5494b9062eee2b1fa0	70559d2e-b256-48c0-a9bc-70993c03c271	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-13 19:01:40	2m 25s	jolly_chandrasekhar	ERR	49c32d34b95bd09824392d6fa178f9cb	e4a41a8e-25f2-44d7-932d-cafd8487104e	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-13 19:13:14	1m 25s	hungry_waddington	ERR	c1b2c0070094aa3d8ef711cdad93f334	02920025-cdff-4805-a4b9-0493d5eaa1d2	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-13 19:18:10	1m 35s	nice_davinci	ERR	c38ac75d5553d17fc745b09a9988d6cf	4ea3418e-2c4b-46e1-985a-11cb0e7c1a09	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-13 19:28:14	10.6s	jovial_volhard	ERR	2b5f4bc19971648f3fa3e0df9336ba6d	8eb9f0c3-4dca-4fd2-8559-8ff5acab31c7	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-13 19:29:08	9.2s	disturbed_rutherford	ERR	047390cd5d365be00dd4477cb08346ef	31b65fed-23a8-4b7c-aa25-31bd79f47caf	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-13 19:29:42	10.9s	spontaneous_cray	ERR	3c21bea777b942bfa94a6eee7cd3fd05	7315da38-d142-4393-9297-4d1aa022389a	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-13 19:32:15	9.6s	angry_carlsson	ERR	925801760b86a4f4e061fc14da6bf4b5	4968bf2b-82f3-434a-8bef-76afa0cba569	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-13 19:34:18	8.8s	loving_faraday	ERR	2b5f4bc19971648f3fa3e0df9336ba6d	a5ee42f3-ae3d-45cd-8071-7fc66e61fa0a	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-13 19:37:36	9.8s	tiny_dijkstra	ERR	0c8364444bfc9991d736e9ae35fcbe85	b6272024-73e7-48e9-8e37-0996142fbeba	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-13 19:38:12	10.4s	serene_chandrasekhar	ERR	b66586387e2d2ea552e867145c1d57e7	c1c43e98-ade1-460c-b124-7d9b0cc0d1e6	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-13 19:40:13	1m 14s	nice_leibniz	ERR	c19fad9c0e8ab543f30a1bac849d64b5	5f644339-f354-4106-b86e-0857d2a0107d	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-13 19:42:25	9.4s	small_ptolemy	ERR	5b8ac12fe59012415c2e4b59bd8ac7b5	a5f03cd5-7f9f-4496-86e5-6a2d39f355b2	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-13 19:43:08	13.9s	gloomy_curie	ERR	1fe6b066493dce0abf510d6cf5fc1470	8842592e-35b4-4da6-a93b-ec37885e5cd3	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-13 20:01:29	1m 4s	evil_elion	ERR	1fe6b066493dce0abf510d6cf5fc1470	b63f497c-8d59-4b9c-a95a-8eab7191de59	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-13 20:15:00	9.7s	jovial_shirley	ERR	adfe60f7c16fd82906f67ab865dcd1bd	ff723e1a-077a-40b9-be4f-35847a40d160	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-13 20:15:36	1m 29s	thirsty_sanger	ERR	01638e9ad8984031053fcd374f34f4e9	5ed2ac0d-146e-4b15-9455-53f93a71646b	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-13 20:18:21	2m 25s	hungry_lagrange	OK	6c4f64187e75714d995423beda4b734d	4da1a668-2b16-4778-a5a9-7bbbbeee4f5c	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-13 20:44:16	14m 40s	modest_dalembert	ERR	6c4f64187e75714d995423beda4b734d	c4520dc2-1243-4db1-b06f-f20bab84785e	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-13 21:03:25	19.3s	tender_pike	ERR	6c4f64187e75714d995423beda4b734d	6b0d6941-07d7-494d-9bf4-47c8e3dea95f	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-13 21:08:58	19.2s	exotic_swartz	ERR	6c4f64187e75714d995423beda4b734d	e372c4e9-c806-483f-bcfd-833cedc4e906	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-13 21:16:13	19.3s	compassionate_cray	ERR	6c4f64187e75714d995423beda4b734d	33ce2303-ea7b-499d-99f9-d52d687db34c	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-13 21:25:09	24.2s	romantic_kay	ERR	6c4f64187e75714d995423beda4b734d	882862ce-5d98-4137-8496-56c3d2b757af	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-13 21:32:13	24.5s	nice_turing	ERR	d6a59e9fa9573eb9440196f2dc0eb188	a7ef6d95-8dbb-4e5b-8a8e-ffa2c76b6748	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-13 21:44:42	14.5s	naughty_banach	ERR	d6a59e9fa9573eb9440196f2dc0eb188	9ec84e58-5ed3-44ba-81af-502568513f14	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-13 21:48:37	28.6s	fervent_wozniak	ERR	d6a59e9fa9573eb9440196f2dc0eb188	09b277b5-c37f-4b29-ab9e-88880750aa90	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-13 21:54:23	14.1s	confident_bose	ERR	d6a59e9fa9573eb9440196f2dc0eb188	089baf33-ebbb-47e1-9479-261f7ccf2941	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-13 21:59:49	28.6s	admiring_becquerel	ERR	d6a59e9fa9573eb9440196f2dc0eb188	cde2fbd6-2148-42aa-aba4-feb0e9339490	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-13 22:01:01	14.2s	loquacious_shockley	ERR	d6a59e9fa9573eb9440196f2dc0eb188	a641ae67-e693-4eee-b41c-0466468a021e	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-13 22:07:16	25.7s	goofy_coulomb	ERR	d6a59e9fa9573eb9440196f2dc0eb188	216da066-b22b-4086-ba47-634b29d1db8a	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-13 22:07:57	14.2s	soggy_wegener	ERR	d6a59e9fa9573eb9440196f2dc0eb188	0549f34f-eb3c-4fc9-959c-4d8c6ce6a5a3	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-13 23:32:37	32.2s	hungry_kare	ERR	d6a59e9fa9573eb9440196f2dc0eb188	96a19096-6937-4d99-be99-e27215e3c749	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-13 23:47:03	3m 33s	cranky_cray	OK	d6a59e9fa9573eb9440196f2dc0eb188	2c7f238b-092e-48cf-ab33-157b37370b43	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-13 23:52:35	1m 58s	infallible_lamarck	OK	d6a59e9fa9573eb9440196f2dc0eb188	018b72e9-8b1d-42e8-9f84-65a4d506b5bc	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-14 14:07:29	18.5s	sleepy_goldstine	ERR	d6a59e9fa9573eb9440196f2dc0eb188	0d0d44bd-a731-4a8f-b14e-e672a1879150	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-14 14:09:31	19s	insane_pasteur	ERR	d6a59e9fa9573eb9440196f2dc0eb188	c605463b-b35e-447e-b1aa-c47c3948f76b	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-14 14:11:09	29.2s	big_euclid	ERR	d6a59e9fa9573eb9440196f2dc0eb188	bd4ffb35-0e95-4637-aa00-2397f684d099	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-14 14:14:11	15.1s	hungry_perlman	ERR	d6a59e9fa9573eb9440196f2dc0eb188	a746afa0-9200-4ae2-95ff-20fa67eec946	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-14 14:14:59	39s	cheeky_linnaeus	ERR	d6a59e9fa9573eb9440196f2dc0eb188	783ffada-f3fc-408d-a2e3-ab5757cc6e40	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-14 14:19:34	30.1s	maniac_kare	ERR	e5cc08e70fb9ae6a7a9a250edb023419	8d60a129-a4f7-4454-8c56-5a155e61f409	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-14 14:23:22	17.3s	hopeful_hawking	ERR	244c35c292c58284fa36fdb02e06f5c2	06ecdd04-827f-4d00-a7eb-a10346d75762	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-14 14:25:43	34.6s	evil_volhard	ERR	244c35c292c58284fa36fdb02e06f5c2	34cf9971-297a-438f-a2a8-b3c8bfc8a910	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-14 14:30:39	31s	prickly_chandrasekhar	ERR	244c35c292c58284fa36fdb02e06f5c2	a91f80a6-fa82-4172-bcde-c1abc2e1a488	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-14 14:31:43	4m 35s	stoic_dubinsky	OK	244c35c292c58284fa36fdb02e06f5c2	bed5dd09-82da-4986-8ca6-c06c6ff3c7a3	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-14 14:40:02	2m 18s	admiring_liskov	OK	244c35c292c58284fa36fdb02e06f5c2	e8d4d517-0699-4d78-9bdd-6a9772a4f4cc	nextflow run main.nf -profile cluster_podman -params-file tests/params.yml
+2025-08-14 15:56:38	14m 32s	clever_wilson	ERR	244c35c292c58284fa36fdb02e06f5c2	a4ab38d1-d504-45cd-8c1e-7316741dc402	nextflow run main.nf -profile cluster_podman -params-file ../tcr_pred_data/params.yml
+2025-08-14 17:28:29	15m 4s	awesome_raman	ERR	244c35c292c58284fa36fdb02e06f5c2	2bd1a4b6-9c6d-4df9-80ab-34f163ea9431	nextflow run main.nf -profile cluster_podman -params-file ../tcr_pred_data/params.yml
+2025-08-15 10:53:07	5m 42s	extravagant_hoover	ERR	244c35c292c58284fa36fdb02e06f5c2	cd1cdfd4-75d7-4b3c-bbfa-a99d254a2948	nextflow run main.nf -profile cluster_podman -params-file ../tcr_pred_data/params.yml
+2025-08-15 11:05:52	28.8s	drunk_leakey	ERR	94b6c0c0b0ee3e8c7098beac9bb6820a	cd1cdfd4-75d7-4b3c-bbfa-a99d254a2948	nextflow run main.nf -profile cluster_podman -params-file ../tcr_pred_data/params.yml -resume
+2025-08-15 11:08:17	19.1s	confident_kimura	ERR	94b6c0c0b0ee3e8c7098beac9bb6820a	cd1cdfd4-75d7-4b3c-bbfa-a99d254a2948	nextflow run main.nf -profile cluster_podman -params-file ../tcr_pred_data/params.yml -resume
+2025-08-15 11:08:53	1m 56s	backstabbing_mayer	ERR	94b6c0c0b0ee3e8c7098beac9bb6820a	30dfde7b-d147-44c1-9db4-8708fffb4835	nextflow run main.nf -profile cluster_podman -params-file ../tcr_pred_data/params.yml
+2025-08-15 12:08:01	13m 23s	lethal_lumiere	ERR	94b6c0c0b0ee3e8c7098beac9bb6820a	9ce5ff05-e816-4b59-931e-aabc4f113fac	nextflow run main.nf -profile cluster_podman -params-file ../tcr_pred_data/params.yml
+2025-08-15 12:22:02	36.5s	mighty_gilbert	ERR	2b43185ce96052566c9adae7a0d8a54f	9ce5ff05-e816-4b59-931e-aabc4f113fac	nextflow run main.nf -profile cluster_podman -params-file ../tcr_pred_data/params.yml -resume
+2025-08-15 12:23:35	44.2s	shrivelled_kay	ERR	2b43185ce96052566c9adae7a0d8a54f	81029b73-62d3-4950-95d5-e02276caf889	nextflow run main.nf -profile cluster_podman -params-file ../tcr_pred_data/params.yml
+2025-08-15 12:35:58	2m 7s	awesome_plateau	ERR	2b43185ce96052566c9adae7a0d8a54f	3a363c0b-895d-4ed1-94cc-c15929197105	nextflow run main.nf -profile cluster_podman -params-file ../tcr_pred_data/params.yml -w work1
+2025-08-15 15:20:26	14m 22s	mad_lavoisier	ERR	2b43185ce96052566c9adae7a0d8a54f	ed8e4b32-a88a-4b2e-ad75-8fdcab93cd3d	nextflow run main.nf -profile cluster_podman -params-file ../tcr_pred_data/params.yml -w work1

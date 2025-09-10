@@ -1,0 +1,348 @@
+Aug-15 11:05:46.383 [main] DEBUG nextflow.cli.Launcher - Setting https proxy: ProxyConfig[protocol=https; host=proxy; port=3128]
+Aug-15 11:05:49.695 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf -profile cluster_podman -params-file ../tcr_pred_data/params.yml -resume
+Aug-15 11:05:50.474 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 25.04.2
+Aug-15 11:05:50.512 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/asmirnov/.nextflow/plugins; core-plugins: nf-amazon@2.15.0,nf-azure@1.16.0,nf-cloudcache@0.4.3,nf-codecommit@0.2.3,nf-console@1.2.1,nf-google@1.21.0,nf-k8s@1.0.0,nf-tower@1.11.2,nf-wave@1.12.1
+Aug-15 11:05:50.550 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Aug-15 11:05:50.551 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Aug-15 11:05:50.555 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Aug-15 11:05:50.568 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Aug-15 11:05:50.605 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /home/asmirnov/dissertation_new/PASS/nextflow.config
+Aug-15 11:05:50.609 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/asmirnov/dissertation_new/PASS/nextflow.config
+Aug-15 11:05:50.724 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/asmirnov/.nextflow/secrets/store.json
+Aug-15 11:05:50.728 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@11841b15] - activable => nextflow.secret.LocalSecretsProvider@11841b15
+Aug-15 11:05:50.817 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `cluster_podman`
+Aug-15 11:05:51.660 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [cluster_podman]
+Aug-15 11:05:51.698 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
+Aug-15 11:05:51.713 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [drunk_leakey] DSL2 - revision: 94b6c0c0b0
+Aug-15 11:05:51.715 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Aug-15 11:05:51.715 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Aug-15 11:05:51.769 [main] DEBUG nextflow.Session - Session UUID: cd1cdfd4-75d7-4b3c-bbfa-a99d254a2948
+Aug-15 11:05:51.769 [main] DEBUG nextflow.Session - Run name: drunk_leakey
+Aug-15 11:05:51.769 [main] DEBUG nextflow.Session - Executor pool size: 2
+Aug-15 11:05:51.778 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Aug-15 11:05:51.783 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Aug-15 11:05:51.822 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 25.04.2 build 5947
+  Created: 13-05-2025 21:58 UTC (14-05-2025 00:58 MSK)
+  System: Linux 5.4.0-165-generic
+  Runtime: Groovy 4.0.26 on OpenJDK 64-Bit Server VM 23.0.2-internal-adhoc.conda.src
+  Encoding: UTF-8 (ANSI_X3.4-1968)
+  Process: 1156524@frontend-1-2-13 [10.64.12.13]
+  CPUs: 2 - Mem: 16 GB (15.5 GB) - Swap: 0 (0)
+Aug-15 11:05:53.062 [main] DEBUG nextflow.Session - Work-dir: /home/asmirnov/dissertation_new/PASS/work [ceph]
+Aug-15 11:05:53.064 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /home/asmirnov/dissertation_new/PASS/bin
+Aug-15 11:05:53.081 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Aug-15 11:05:53.091 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Aug-15 11:05:53.124 [main] DEBUG nextflow.Session - Observer factory (v2): LinObserverFactory
+Aug-15 11:05:53.152 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Aug-15 11:05:53.162 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 3; maxThreads: 1000
+Aug-15 11:05:54.884 [main] DEBUG nextflow.Session - Session start
+Aug-15 11:05:54.895 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow started -- trace file: /home/asmirnov/dissertation_new/PASS/tcr_pred_results/pipeline_info/execution_trace_2025-08-15_11-05-51.txt
+Aug-15 11:05:56.192 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Aug-15 11:05:56.453 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Aug-15 11:05:56.454 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Aug-15 11:05:56.469 [main] DEBUG nextflow.executor.Executor - [warm up] executor > slurm
+Aug-15 11:05:56.481 [main] DEBUG n.processor.TaskPollingMonitor - Creating task monitor for executor 'slurm' > capacity: 30; pollInterval: 5s; dumpInterval: 5m 
+Aug-15 11:05:56.484 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: slurm)
+Aug-15 11:05:56.487 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+Aug-15 11:05:56.511 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'GENERATE_TRAIN_CONFIG': maxForks=0; fair=false; array=0
+Aug-15 11:05:56.578 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:TRAIN` matches process TRAIN
+Aug-15 11:05:56.587 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Aug-15 11:05:56.587 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Aug-15 11:05:56.589 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'TRAIN': maxForks=0; fair=false; array=0
+Aug-15 11:05:56.595 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: GENERATE_TRAIN_CONFIG, TRAIN
+Aug-15 11:05:56.600 [main] DEBUG nextflow.Session - Igniting dataflow network (5)
+Aug-15 11:05:56.613 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > GENERATE_TRAIN_CONFIG
+Aug-15 11:05:56.613 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRAIN
+Aug-15 11:05:56.613 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_d27b76e0e13428b6: /home/asmirnov/dissertation_new/PASS/main.nf
+Aug-15 11:05:56.613 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Aug-15 11:05:56.613 [main] DEBUG nextflow.Session - Session await
+Aug-15 11:05:56.622 [PathVisitor-1] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: /home/asmirnov/dissertation_new/tcr_pred_data/; pattern: *.sdf; options: [:]
+Aug-15 11:05:57.502 [Actor Thread 3] INFO  nextflow.processor.TaskProcessor - [fc/c1c362] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3alpha_mhc_0_3)
+Aug-15 11:05:57.504 [Actor Thread 5] INFO  nextflow.processor.TaskProcessor - [5c/341670] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3alpha_mhc_0_4)
+Aug-15 11:05:57.875 [Actor Thread 3] INFO  nextflow.processor.TaskProcessor - [aa/81cad4] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3alpha_mhc_0_5)
+Aug-15 11:05:57.879 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [62/ab4d55] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3alpha_mhc_0_6)
+Aug-15 11:05:57.921 [Actor Thread 5] INFO  nextflow.processor.TaskProcessor - [e2/10a3f0] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3alpha_mhc_0_7)
+Aug-15 11:05:58.364 [Actor Thread 8] INFO  nextflow.processor.TaskProcessor - [a0/99157d] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3alpha_mhc_0_8)
+Aug-15 11:05:58.383 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [05/a7d981] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3alpha_mhc_0_9)
+Aug-15 11:05:58.417 [Actor Thread 8] INFO  nextflow.processor.TaskProcessor - [65/58570c] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3alpha_mhc_0_11)
+Aug-15 11:05:58.440 [Actor Thread 5] INFO  nextflow.processor.TaskProcessor - [aa/8a74db] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3alpha_mhc_0_10)
+Aug-15 11:05:58.473 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [8e/074ed1] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3alpha_mhc_0_3)
+Aug-15 11:05:58.885 [Actor Thread 3] INFO  nextflow.processor.TaskProcessor - [04/78de53] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3alpha_mhc_0_12)
+Aug-15 11:05:58.902 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRAIN (human-ch_cdr3alpha_mhc_0_3) > jobId: 887887; workDir: /home/asmirnov/dissertation_new/PASS/work/55/6e64243fe51dd4862ea183da3d3939
+Aug-15 11:05:58.902 [Actor Thread 5] INFO  nextflow.processor.TaskProcessor - [dc/e765b9] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3alpha_mhc_0_4)
+Aug-15 11:05:58.902 [Task submitter] INFO  nextflow.Session - [55/6e6424] Submitted process > TRAIN (human-ch_cdr3alpha_mhc_0_3)
+Aug-15 11:05:58.954 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [6d/f78383] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3alpha_mhc_0_5)
+Aug-15 11:05:58.976 [Actor Thread 11] INFO  nextflow.processor.TaskProcessor - [ad/bfa30e] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3alpha_mhc_0_6)
+Aug-15 11:05:58.997 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRAIN (human-ch_cdr3alpha_mhc_0_4) > jobId: 887888; workDir: /home/asmirnov/dissertation_new/PASS/work/2a/49c01cdb871ffbc9c037317849cdfc
+Aug-15 11:05:59.037 [Task submitter] INFO  nextflow.Session - [2a/49c01c] Submitted process > TRAIN (human-ch_cdr3alpha_mhc_0_4)
+Aug-15 11:05:59.331 [Actor Thread 3] INFO  nextflow.processor.TaskProcessor - [f5/51d840] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3alpha_mhc_0_7)
+Aug-15 11:05:59.339 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRAIN (human-ch_cdr3alpha_mhc_0_5) > jobId: 887889; workDir: /home/asmirnov/dissertation_new/PASS/work/fe/3b93ef7c7551bfb51dd43118acff1e
+Aug-15 11:05:59.339 [Task submitter] INFO  nextflow.Session - [fe/3b93ef] Submitted process > TRAIN (human-ch_cdr3alpha_mhc_0_5)
+Aug-15 11:05:59.347 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [ba/e1d6c1] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3alpha_mhc_0_8)
+Aug-15 11:05:59.364 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRAIN (human-ch_cdr3alpha_mhc_0_6) > jobId: 887890; workDir: /home/asmirnov/dissertation_new/PASS/work/22/e86380b7cf9a0cc88e0e1a096a5684
+Aug-15 11:05:59.364 [Task submitter] INFO  nextflow.Session - [22/e86380] Submitted process > TRAIN (human-ch_cdr3alpha_mhc_0_6)
+Aug-15 11:05:59.387 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRAIN (human-ch_cdr3alpha_mhc_0_8) > jobId: 887891; workDir: /home/asmirnov/dissertation_new/PASS/work/e6/2339d049870903df5351fc8cdd4ac4
+Aug-15 11:05:59.388 [Task submitter] INFO  nextflow.Session - [e6/2339d0] Submitted process > TRAIN (human-ch_cdr3alpha_mhc_0_8)
+Aug-15 11:05:59.801 [Actor Thread 11] INFO  nextflow.processor.TaskProcessor - [af/4fcffe] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3alpha_mhc_0_9)
+Aug-15 11:05:59.803 [Actor Thread 7] INFO  nextflow.processor.TaskProcessor - [00/8b21f7] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3alpha_mhc_0_10)
+Aug-15 11:05:59.850 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [12/229f6f] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3alpha_mhc_0_11)
+Aug-15 11:05:59.861 [Actor Thread 8] INFO  nextflow.processor.TaskProcessor - [f4/334428] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3alpha_mhc_0_12)
+Aug-15 11:05:59.863 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRAIN (human-ch_cdr3alpha_mhc_0_7) > jobId: 887892; workDir: /home/asmirnov/dissertation_new/PASS/work/5a/1bccd033d4017682976213bb0b9a00
+Aug-15 11:05:59.864 [Task submitter] INFO  nextflow.Session - [5a/1bccd0] Submitted process > TRAIN (human-ch_cdr3alpha_mhc_0_7)
+Aug-15 11:05:59.894 [Actor Thread 7] INFO  nextflow.processor.TaskProcessor - [3a/6c1ebc] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3beta_mhc_0_3)
+Aug-15 11:05:59.894 [Actor Thread 11] INFO  nextflow.processor.TaskProcessor - [31/d716b4] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3beta_mhc_0_4)
+Aug-15 11:05:59.925 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [39/83cfc7] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3beta_mhc_0_5)
+Aug-15 11:05:59.932 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRAIN (human-ch_cdr3alpha_mhc_0_9) > jobId: 887893; workDir: /home/asmirnov/dissertation_new/PASS/work/d8/33475a122a7c17f49a0f84ced08cf0
+Aug-15 11:05:59.933 [Task submitter] INFO  nextflow.Session - [d8/33475a] Submitted process > TRAIN (human-ch_cdr3alpha_mhc_0_9)
+Aug-15 11:05:59.940 [Actor Thread 11] INFO  nextflow.processor.TaskProcessor - [66/bc40ac] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3beta_mhc_0_6)
+Aug-15 11:05:59.949 [Actor Thread 10] INFO  nextflow.processor.TaskProcessor - [d6/ab9a87] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3beta_mhc_0_7)
+Aug-15 11:05:59.975 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRAIN (human-ch_cdr3alpha_mhc_0_11) > jobId: 887894; workDir: /home/asmirnov/dissertation_new/PASS/work/24/061658f9a66333a22eaf933aa73757
+Aug-15 11:05:59.975 [Task submitter] INFO  nextflow.Session - [24/061658] Submitted process > TRAIN (human-ch_cdr3alpha_mhc_0_11)
+Aug-15 11:06:00.311 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [45/95f5a1] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3beta_mhc_0_8)
+Aug-15 11:06:00.312 [Actor Thread 7] INFO  nextflow.processor.TaskProcessor - [b3/216a8f] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3beta_mhc_0_9)
+Aug-15 11:06:00.336 [Actor Thread 11] INFO  nextflow.processor.TaskProcessor - [3a/07e587] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3beta_mhc_0_10)
+Aug-15 11:06:00.340 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRAIN (human-ch_cdr3alpha_mhc_0_10) > jobId: 887895; workDir: /home/asmirnov/dissertation_new/PASS/work/d2/5efb6dbd4ac460957aedcc68e5fe75
+Aug-15 11:06:00.340 [Task submitter] INFO  nextflow.Session - [d2/5efb6d] Submitted process > TRAIN (human-ch_cdr3alpha_mhc_0_10)
+Aug-15 11:06:00.362 [Actor Thread 7] INFO  nextflow.processor.TaskProcessor - [f6/ede89e] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3beta_mhc_0_11)
+Aug-15 11:06:00.366 [Actor Thread 8] INFO  nextflow.processor.TaskProcessor - [fe/7ef074] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3beta_mhc_0_12)
+Aug-15 11:06:00.408 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRAIN (mouse-u_cdr3alpha_mhc_0_3) > jobId: 887896; workDir: /home/asmirnov/dissertation_new/PASS/work/27/9a61a469e65618022bd8cb1082d1eb
+Aug-15 11:06:00.409 [Task submitter] INFO  nextflow.Session - [27/9a61a4] Submitted process > TRAIN (mouse-u_cdr3alpha_mhc_0_3)
+Aug-15 11:06:00.715 [Actor Thread 6] INFO  nextflow.processor.TaskProcessor - [40/906758] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3beta_mhc_0_3)
+Aug-15 11:06:00.724 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [b2/e1fc4a] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3beta_mhc_0_4)
+Aug-15 11:06:00.750 [Actor Thread 10] INFO  nextflow.processor.TaskProcessor - [c4/7e19ab] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3beta_mhc_0_6)
+Aug-15 11:06:00.752 [Actor Thread 3] INFO  nextflow.processor.TaskProcessor - [a3/939a2a] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3beta_mhc_0_5)
+Aug-15 11:06:00.753 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRAIN (human-ch_cdr3alpha_mhc_0_12) > jobId: 887897; workDir: /home/asmirnov/dissertation_new/PASS/work/27/b1fb6074716b4eec32da44331ed61a
+Aug-15 11:06:00.753 [Task submitter] INFO  nextflow.Session - [27/b1fb60] Submitted process > TRAIN (human-ch_cdr3alpha_mhc_0_12)
+Aug-15 11:06:01.197 [Actor Thread 6] INFO  nextflow.processor.TaskProcessor - [cf/f1bfac] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3beta_mhc_0_7)
+Aug-15 11:06:01.204 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [74/650ea6] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3beta_mhc_0_8)
+Aug-15 11:06:01.234 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [8f/4c7c0e] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3beta_mhc_0_9)
+Aug-15 11:06:01.240 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [bc/04d9ce] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3beta_mhc_0_10)
+Aug-15 11:06:01.247 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRAIN (mouse-u_cdr3alpha_mhc_0_4) > jobId: 887898; workDir: /home/asmirnov/dissertation_new/PASS/work/6f/64c17f313f2dab98f8cceee6e8ff32
+Aug-15 11:06:01.247 [Task submitter] INFO  nextflow.Session - [6f/64c17f] Submitted process > TRAIN (mouse-u_cdr3alpha_mhc_0_4)
+Aug-15 11:06:01.263 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [b6/8c3f6b] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3beta_mhc_0_12)
+Aug-15 11:06:01.271 [Actor Thread 10] INFO  nextflow.processor.TaskProcessor - [40/44f0c9] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3beta_mhc_0_11)
+Aug-15 11:06:01.279 [Actor Thread 6] INFO  nextflow.processor.TaskProcessor - [d7/e8e4bd] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3beta_epitope_0_3)
+Aug-15 11:06:01.288 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [0c/2656e1] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3beta_epitope_0_5)
+Aug-15 11:06:01.293 [Actor Thread 10] INFO  nextflow.processor.TaskProcessor - [b9/56aa7e] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3beta_epitope_0_4)
+Aug-15 11:06:01.302 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [91/88d437] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3beta_epitope_0_6)
+Aug-15 11:06:01.313 [Actor Thread 10] INFO  nextflow.processor.TaskProcessor - [2e/50f05e] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3beta_epitope_0_7)
+Aug-15 11:06:01.321 [Actor Thread 6] INFO  nextflow.processor.TaskProcessor - [6f/da9f73] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3beta_epitope_0_8)
+Aug-15 11:06:01.331 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRAIN (mouse-u_cdr3alpha_mhc_0_5) > jobId: 887899; workDir: /home/asmirnov/dissertation_new/PASS/work/c3/405576753af6812af029e4e712899e
+Aug-15 11:06:01.331 [Task submitter] INFO  nextflow.Session - [c3/405576] Submitted process > TRAIN (mouse-u_cdr3alpha_mhc_0_5)
+Aug-15 11:06:01.345 [Actor Thread 11] INFO  nextflow.processor.TaskProcessor - [47/a69588] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3beta_epitope_0_9)
+Aug-15 11:06:01.355 [Actor Thread 7] INFO  nextflow.processor.TaskProcessor - [66/8fed5f] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3beta_epitope_0_10)
+Aug-15 11:06:01.369 [Actor Thread 11] INFO  nextflow.processor.TaskProcessor - [06/2f9afb] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3beta_epitope_0_11)
+Aug-15 11:06:01.388 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRAIN (mouse-u_cdr3alpha_mhc_0_6) > jobId: 887900; workDir: /home/asmirnov/dissertation_new/PASS/work/4f/b6adcb2b9ab037570aaca954bca1ef
+Aug-15 11:06:01.389 [Task submitter] INFO  nextflow.Session - [4f/b6adcb] Submitted process > TRAIN (mouse-u_cdr3alpha_mhc_0_6)
+Aug-15 11:06:01.817 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [d2/7fdb30] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3alpha_mhc_0_3)
+Aug-15 11:06:01.829 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [89/b37847] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3beta_epitope_0_12)
+Aug-15 11:06:01.853 [Actor Thread 3] INFO  nextflow.processor.TaskProcessor - [fc/0fcbf0] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3alpha_mhc_0_4)
+Aug-15 11:06:01.884 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRAIN (mouse-u_cdr3alpha_mhc_0_8) > jobId: 887901; workDir: /home/asmirnov/dissertation_new/PASS/work/c1/4cd0dc337c62afaafc1ea98536680d
+Aug-15 11:06:01.884 [Task submitter] INFO  nextflow.Session - [c1/4cd0dc] Submitted process > TRAIN (mouse-u_cdr3alpha_mhc_0_8)
+Aug-15 11:06:02.230 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [ae/8bb0ce] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3alpha_mhc_0_6)
+Aug-15 11:06:02.230 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [a3/b492df] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3alpha_mhc_0_5)
+Aug-15 11:06:02.260 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRAIN (mouse-u_cdr3alpha_mhc_0_7) > jobId: 887902; workDir: /home/asmirnov/dissertation_new/PASS/work/42/da584e9f9cdfefe0cd3e5e8ad206c7
+Aug-15 11:06:02.260 [Task submitter] INFO  nextflow.Session - [42/da584e] Submitted process > TRAIN (mouse-u_cdr3alpha_mhc_0_7)
+Aug-15 11:06:02.576 [Actor Thread 7] INFO  nextflow.processor.TaskProcessor - [9e/dba2c4] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3alpha_mhc_0_8)
+Aug-15 11:06:02.584 [Actor Thread 3] INFO  nextflow.processor.TaskProcessor - [5c/befdfe] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3alpha_mhc_0_7)
+Aug-15 11:06:02.608 [Actor Thread 8] INFO  nextflow.processor.TaskProcessor - [ad/51a112] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3alpha_mhc_0_10)
+Aug-15 11:06:02.613 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [63/96f521] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3alpha_mhc_0_9)
+Aug-15 11:06:02.622 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [06/ec85b4] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3alpha_mhc_0_12)
+Aug-15 11:06:02.644 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRAIN (mouse-u_cdr3alpha_mhc_0_9) > jobId: 887903; workDir: /home/asmirnov/dissertation_new/PASS/work/fb/3bd27128f158e6dd7bf4845f9de0c2
+Aug-15 11:06:02.645 [Task submitter] INFO  nextflow.Session - [fb/3bd271] Submitted process > TRAIN (mouse-u_cdr3alpha_mhc_0_9)
+Aug-15 11:06:03.055 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [29/0608cf] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3alpha_mhc_0_11)
+Aug-15 11:06:03.082 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRAIN (mouse-u_cdr3alpha_mhc_0_10) > jobId: 887904; workDir: /home/asmirnov/dissertation_new/PASS/work/6f/aa7d3ebb8d800e30b4846bb3f4101f
+Aug-15 11:06:03.082 [Task submitter] INFO  nextflow.Session - [6f/aa7d3e] Submitted process > TRAIN (mouse-u_cdr3alpha_mhc_0_10)
+Aug-15 11:06:03.085 [Actor Thread 8] INFO  nextflow.processor.TaskProcessor - [78/b60359] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3beta_epitope_0_3)
+Aug-15 11:06:03.087 [Actor Thread 6] INFO  nextflow.processor.TaskProcessor - [95/167098] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3beta_epitope_0_4)
+Aug-15 11:06:03.105 [Actor Thread 11] INFO  nextflow.processor.TaskProcessor - [d5/cd4dcf] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3beta_epitope_0_5)
+Aug-15 11:06:03.122 [Actor Thread 6] INFO  nextflow.processor.TaskProcessor - [5c/b87250] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3beta_epitope_0_6)
+Aug-15 11:06:03.126 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [f0/169a13] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3beta_epitope_0_7)
+Aug-15 11:06:03.136 [Actor Thread 6] INFO  nextflow.processor.TaskProcessor - [91/f8c5d7] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3beta_epitope_0_9)
+Aug-15 11:06:03.145 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRAIN (mouse-u_cdr3alpha_mhc_0_11) > jobId: 887905; workDir: /home/asmirnov/dissertation_new/PASS/work/bf/d514890cbb45d25c17131b224f1b4e
+Aug-15 11:06:03.145 [Task submitter] INFO  nextflow.Session - [bf/d51489] Submitted process > TRAIN (mouse-u_cdr3alpha_mhc_0_11)
+Aug-15 11:06:03.149 [Actor Thread 11] INFO  nextflow.processor.TaskProcessor - [44/377b94] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3beta_epitope_0_8)
+Aug-15 11:06:03.175 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [cf/839e3e] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3beta_epitope_0_10)
+Aug-15 11:06:03.221 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRAIN (mouse-u_cdr3alpha_mhc_0_12) > jobId: 887906; workDir: /home/asmirnov/dissertation_new/PASS/work/66/d0a3047683c8345619fcbc6440bdef
+Aug-15 11:06:03.221 [Task submitter] INFO  nextflow.Session - [66/d0a304] Submitted process > TRAIN (mouse-u_cdr3alpha_mhc_0_12)
+Aug-15 11:06:03.501 [Actor Thread 10] INFO  nextflow.processor.TaskProcessor - [0c/368938] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3beta_epitope_0_11)
+Aug-15 11:06:03.569 [Actor Thread 3] INFO  nextflow.processor.TaskProcessor - [5e/0bac7b] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3beta_epitope_0_12)
+Aug-15 11:06:03.598 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRAIN (human-ch_cdr3beta_mhc_0_3) > jobId: 887907; workDir: /home/asmirnov/dissertation_new/PASS/work/60/fb3cd2daaa51d37aba0770ebb0b9ef
+Aug-15 11:06:03.598 [Task submitter] INFO  nextflow.Session - [60/fb3cd2] Submitted process > TRAIN (human-ch_cdr3beta_mhc_0_3)
+Aug-15 11:06:03.610 [Actor Thread 7] INFO  nextflow.processor.TaskProcessor - [e3/26c702] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3alpha_epitope_0_4)
+Aug-15 11:06:03.631 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRAIN (human-ch_cdr3beta_mhc_0_4) > jobId: 887908; workDir: /home/asmirnov/dissertation_new/PASS/work/5f/1e183982e5393fd9f74d918744e3a9
+Aug-15 11:06:03.631 [Task submitter] INFO  nextflow.Session - [5f/1e1839] Submitted process > TRAIN (human-ch_cdr3beta_mhc_0_4)
+Aug-15 11:06:03.981 [Actor Thread 10] INFO  nextflow.processor.TaskProcessor - [23/07bab0] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3alpha_epitope_0_5)
+Aug-15 11:06:04.014 [Actor Thread 10] INFO  nextflow.processor.TaskProcessor - [5f/2febf3] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3alpha_epitope_0_6)
+Aug-15 11:06:04.018 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRAIN (human-ch_cdr3beta_mhc_0_5) > jobId: 887909; workDir: /home/asmirnov/dissertation_new/PASS/work/6d/38ad521e3f16f49d0f3250a9e2a884
+Aug-15 11:06:04.019 [Task submitter] INFO  nextflow.Session - [6d/38ad52] Submitted process > TRAIN (human-ch_cdr3beta_mhc_0_5)
+Aug-15 11:06:04.040 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRAIN (human-ch_cdr3beta_mhc_0_7) > jobId: 887910; workDir: /home/asmirnov/dissertation_new/PASS/work/a5/a5d156033f53c94d80a83982f5c03e
+Aug-15 11:06:04.041 [Task submitter] INFO  nextflow.Session - [a5/a5d156] Submitted process > TRAIN (human-ch_cdr3beta_mhc_0_7)
+Aug-15 11:06:04.368 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [ab/89b770] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3alpha_epitope_0_3)
+Aug-15 11:06:04.369 [Actor Thread 7] INFO  nextflow.processor.TaskProcessor - [78/3097c5] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3alpha_epitope_0_7)
+Aug-15 11:06:04.391 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [1f/c063e3] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3alpha_epitope_0_9)
+Aug-15 11:06:04.400 [Actor Thread 7] INFO  nextflow.processor.TaskProcessor - [85/c54194] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3alpha_epitope_0_8)
+Aug-15 11:06:04.417 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRAIN (human-ch_cdr3beta_mhc_0_6) > jobId: 887911; workDir: /home/asmirnov/dissertation_new/PASS/work/a6/6c065875b38506a965fd7c8650f566
+Aug-15 11:06:04.418 [Task submitter] INFO  nextflow.Session - [a6/6c0658] Submitted process > TRAIN (human-ch_cdr3beta_mhc_0_6)
+Aug-15 11:06:04.419 [Actor Thread 8] INFO  nextflow.processor.TaskProcessor - [e8/876521] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3alpha_epitope_0_10)
+Aug-15 11:06:04.773 [Actor Thread 6] INFO  nextflow.processor.TaskProcessor - [67/713432] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3alpha_epitope_0_12)
+Aug-15 11:06:04.788 [Actor Thread 10] INFO  nextflow.processor.TaskProcessor - [2a/6f436e] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3alpha_epitope_0_11)
+Aug-15 11:06:04.789 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRAIN (human-ch_cdr3beta_mhc_0_9) > jobId: 887912; workDir: /home/asmirnov/dissertation_new/PASS/work/e0/f1a2bae44b6eb612db8e93b4deab94
+Aug-15 11:06:04.792 [Task submitter] INFO  nextflow.Session - [e0/f1a2ba] Submitted process > TRAIN (human-ch_cdr3beta_mhc_0_9)
+Aug-15 11:06:04.825 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRAIN (human-ch_cdr3beta_mhc_0_8) > jobId: 887913; workDir: /home/asmirnov/dissertation_new/PASS/work/6a/dd629f42f07ce3e7c1ba5eccbd4e75
+Aug-15 11:06:04.826 [Task submitter] INFO  nextflow.Session - [6a/dd629f] Submitted process > TRAIN (human-ch_cdr3beta_mhc_0_8)
+Aug-15 11:06:05.147 [Actor Thread 7] INFO  nextflow.processor.TaskProcessor - [58/c66640] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3beta_epitope_0_3)
+Aug-15 11:06:05.150 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [e3/f930fd] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3beta_epitope_0_4)
+Aug-15 11:06:05.191 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRAIN (human-ch_cdr3beta_mhc_0_10) > jobId: 887914; workDir: /home/asmirnov/dissertation_new/PASS/work/88/2e3b5fe8b59ccbb852ccb5fc2ad277
+Aug-15 11:06:05.191 [Task submitter] INFO  nextflow.Session - [88/2e3b5f] Submitted process > TRAIN (human-ch_cdr3beta_mhc_0_10)
+Aug-15 11:06:05.606 [Actor Thread 7] INFO  nextflow.processor.TaskProcessor - [09/13d5f3] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3beta_epitope_0_5)
+Aug-15 11:06:05.608 [Actor Thread 6] INFO  nextflow.processor.TaskProcessor - [24/dc118b] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3beta_epitope_0_6)
+Aug-15 11:06:05.626 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [3d/d578e5] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3beta_epitope_0_7)
+Aug-15 11:06:05.627 [Actor Thread 6] INFO  nextflow.processor.TaskProcessor - [13/f3cfa8] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3beta_epitope_0_8)
+Aug-15 11:06:05.647 [Actor Thread 3] INFO  nextflow.processor.TaskProcessor - [3c/a2abae] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3beta_epitope_0_9)
+Aug-15 11:06:05.654 [Actor Thread 10] INFO  nextflow.processor.TaskProcessor - [49/1dfcfa] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3beta_epitope_0_10)
+Aug-15 11:06:05.674 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRAIN (human-ch_cdr3beta_mhc_0_12) > jobId: 887915; workDir: /home/asmirnov/dissertation_new/PASS/work/e3/1e486e6725d910638d5239f05f96db
+Aug-15 11:06:05.674 [Task submitter] INFO  nextflow.Session - [e3/1e486e] Submitted process > TRAIN (human-ch_cdr3beta_mhc_0_12)
+Aug-15 11:06:05.977 [Actor Thread 10] INFO  nextflow.processor.TaskProcessor - [19/97d046] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3beta_epitope_0_12)
+Aug-15 11:06:05.997 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [f2/929e81] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3beta_mhc_0_3)
+Aug-15 11:06:06.012 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRAIN (human-ch_cdr3beta_mhc_0_11) > jobId: 887916; workDir: /home/asmirnov/dissertation_new/PASS/work/32/4b00f95540953563f54493449bdf3f
+Aug-15 11:06:06.013 [Task submitter] INFO  nextflow.Session - [32/4b00f9] Submitted process > TRAIN (human-ch_cdr3beta_mhc_0_11)
+Aug-15 11:06:06.023 [Actor Thread 10] INFO  nextflow.processor.TaskProcessor - [11/43d4b0] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3beta_mhc_0_4)
+Aug-15 11:06:06.023 [Actor Thread 11] INFO  nextflow.processor.TaskProcessor - [aa/431b50] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3beta_epitope_0_11)
+Aug-15 11:06:06.437 [Actor Thread 11] INFO  nextflow.processor.TaskProcessor - [18/5ab89a] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3beta_mhc_0_6)
+Aug-15 11:06:06.449 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [70/b2e9cd] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3beta_mhc_0_5)
+Aug-15 11:06:06.473 [Actor Thread 11] INFO  nextflow.processor.TaskProcessor - [03/d2d047] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3beta_mhc_0_7)
+Aug-15 11:06:06.487 [Actor Thread 6] INFO  nextflow.processor.TaskProcessor - [64/b442d9] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3beta_mhc_0_9)
+Aug-15 11:06:06.488 [Actor Thread 10] INFO  nextflow.processor.TaskProcessor - [80/d1c24a] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3beta_mhc_0_8)
+Aug-15 11:06:06.510 [Actor Thread 7] INFO  nextflow.processor.TaskProcessor - [f1/0cf3dd] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3beta_mhc_0_10)
+Aug-15 11:06:06.511 [Actor Thread 9] INFO  nextflow.processor.TaskProcessor - [db/92cd4e] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3beta_mhc_0_11)
+Aug-15 11:06:06.550 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [5f/5f127e] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3beta_mhc_0_3)
+Aug-15 11:06:06.563 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [57/9d1738] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3beta_mhc_0_12)
+Aug-15 11:06:06.887 [Actor Thread 9] INFO  nextflow.processor.TaskProcessor - [99/568a04] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3beta_mhc_0_4)
+Aug-15 11:06:06.888 [Actor Thread 12] INFO  nextflow.processor.TaskProcessor - [27/e8c34a] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3beta_mhc_0_5)
+Aug-15 11:06:06.928 [Actor Thread 12] INFO  nextflow.processor.TaskProcessor - [22/964f84] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3beta_mhc_0_7)
+Aug-15 11:06:06.942 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [ce/4baa52] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3beta_mhc_0_6)
+Aug-15 11:06:07.376 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [11/1eb2e5] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3beta_mhc_0_9)
+Aug-15 11:06:07.377 [Actor Thread 10] INFO  nextflow.processor.TaskProcessor - [9d/ef20fa] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3beta_mhc_0_8)
+Aug-15 11:06:07.451 [Actor Thread 12] INFO  nextflow.processor.TaskProcessor - [ec/10997c] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3beta_mhc_0_10)
+Aug-15 11:06:07.921 [Actor Thread 10] INFO  nextflow.processor.TaskProcessor - [ee/d2c604] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3beta_mhc_0_11)
+Aug-15 11:06:07.939 [Actor Thread 3] INFO  nextflow.processor.TaskProcessor - [b6/a6f5d8] Cached process > GENERATE_TRAIN_CONFIG (mouse-ch_cdr3beta_mhc_0_12)
+Aug-15 11:06:07.943 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [d6/2d8591] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3alpha_epitope_0_3)
+Aug-15 11:06:07.965 [Actor Thread 9] INFO  nextflow.processor.TaskProcessor - [4c/6ad28c] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3alpha_epitope_0_5)
+Aug-15 11:06:07.974 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [78/678fd0] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3alpha_epitope_0_4)
+Aug-15 11:06:08.046 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [e8/372ed5] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3alpha_epitope_0_7)
+Aug-15 11:06:08.373 [Actor Thread 7] INFO  nextflow.processor.TaskProcessor - [06/3a9eaf] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3alpha_epitope_0_6)
+Aug-15 11:06:08.390 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [ce/063e3e] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3alpha_epitope_0_8)
+Aug-15 11:06:08.425 [Actor Thread 11] INFO  nextflow.processor.TaskProcessor - [35/667a7b] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3alpha_epitope_0_10)
+Aug-15 11:06:08.746 [Actor Thread 12] INFO  nextflow.processor.TaskProcessor - [30/0c1366] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3alpha_epitope_0_9)
+Aug-15 11:06:08.794 [Actor Thread 11] INFO  nextflow.processor.TaskProcessor - [38/db370d] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3alpha_epitope_0_11)
+Aug-15 11:06:09.223 [Actor Thread 7] INFO  nextflow.processor.TaskProcessor - [f6/d49510] Cached process > GENERATE_TRAIN_CONFIG (mouse-u_cdr3alpha_epitope_0_12)
+Aug-15 11:06:09.338 [Actor Thread 3] INFO  nextflow.processor.TaskProcessor - [23/46c8f5] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3alpha_epitope_0_3)
+Aug-15 11:06:09.367 [Actor Thread 3] INFO  nextflow.processor.TaskProcessor - [7f/dc7a09] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3alpha_epitope_0_5)
+Aug-15 11:06:09.367 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [c9/09ff9e] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3alpha_epitope_0_4)
+Aug-15 11:06:09.375 [Actor Thread 3] INFO  nextflow.processor.TaskProcessor - [fd/1c1e1b] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3alpha_epitope_0_6)
+Aug-15 11:06:09.378 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [54/8b6339] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3alpha_epitope_0_7)
+Aug-15 11:06:09.389 [Actor Thread 8] INFO  nextflow.processor.TaskProcessor - [3a/4fa199] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3alpha_epitope_0_8)
+Aug-15 11:06:09.797 [Actor Thread 12] INFO  nextflow.processor.TaskProcessor - [ee/f16362] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3alpha_epitope_0_9)
+Aug-15 11:06:09.818 [Actor Thread 8] INFO  nextflow.processor.TaskProcessor - [9a/6f598e] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3alpha_epitope_0_11)
+Aug-15 11:06:09.843 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [4c/d5edeb] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3alpha_epitope_0_10)
+Aug-15 11:06:09.927 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [d5/0bf4dc] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3alpha_epitope_0_12)
+Aug-15 11:06:10.302 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [30/bf3eaa] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3alpha_epitope_0_4)
+Aug-15 11:06:10.316 [Actor Thread 8] INFO  nextflow.processor.TaskProcessor - [3a/d26ac9] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3alpha_epitope_0_3)
+Aug-15 11:06:10.338 [Actor Thread 12] INFO  nextflow.processor.TaskProcessor - [44/41f0ff] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3alpha_epitope_0_5)
+Aug-15 11:06:10.350 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [b1/cdd40a] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3alpha_epitope_0_6)
+Aug-15 11:06:10.362 [Actor Thread 8] INFO  nextflow.processor.TaskProcessor - [5c/d4947c] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3alpha_epitope_0_8)
+Aug-15 11:06:10.701 [Actor Thread 3] INFO  nextflow.processor.TaskProcessor - [7e/c57d7c] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3alpha_epitope_0_7)
+Aug-15 11:06:10.733 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [44/48bcb1] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3alpha_epitope_0_9)
+Aug-15 11:06:10.750 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [ff/bbe879] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3alpha_epitope_0_10)
+Aug-15 11:06:11.467 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [1e/ef7389] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3alpha_epitope_0_11)
+Aug-15 11:06:11.470 [Actor Thread 7] INFO  nextflow.processor.TaskProcessor - [3a/1dabbb] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3alpha_epitope_0_12)
+Aug-15 11:06:11.478 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [ae/ed5f97] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3beta_epitope_0_3)
+Aug-15 11:06:11.518 [Actor Thread 7] INFO  nextflow.processor.TaskProcessor - [ef/da45ac] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3beta_epitope_0_4)
+Aug-15 11:06:11.519 [Actor Thread 11] INFO  nextflow.processor.TaskProcessor - [b4/c12ed0] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3beta_epitope_0_5)
+Aug-15 11:06:11.547 [Actor Thread 12] INFO  nextflow.processor.TaskProcessor - [cf/e8169d] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3beta_epitope_0_7)
+Aug-15 11:06:11.550 [Actor Thread 7] INFO  nextflow.processor.TaskProcessor - [08/366f81] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3beta_epitope_0_6)
+Aug-15 11:06:11.566 [Actor Thread 10] INFO  nextflow.processor.TaskProcessor - [66/161a94] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3beta_epitope_0_9)
+Aug-15 11:06:11.969 [Actor Thread 7] INFO  nextflow.processor.TaskProcessor - [0d/de645d] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3beta_epitope_0_8)
+Aug-15 11:06:11.997 [Actor Thread 12] INFO  nextflow.processor.TaskProcessor - [ce/28d511] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3beta_epitope_0_10)
+Aug-15 11:06:12.024 [Actor Thread 11] INFO  nextflow.processor.TaskProcessor - [7b/70949b] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3beta_epitope_0_11)
+Aug-15 11:06:12.357 [Actor Thread 7] INFO  nextflow.processor.TaskProcessor - [8d/380cbd] Cached process > GENERATE_TRAIN_CONFIG (human-ch_cdr3beta_epitope_0_12)
+Aug-15 11:06:12.372 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [49/ddabb2] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3alpha_mhc_0_3)
+Aug-15 11:06:12.388 [Actor Thread 10] INFO  nextflow.processor.TaskProcessor - [23/e3595f] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3alpha_mhc_0_4)
+Aug-15 11:06:12.730 [Actor Thread 9] INFO  nextflow.processor.TaskProcessor - [64/89b536] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3alpha_mhc_0_5)
+Aug-15 11:06:12.732 [Actor Thread 11] INFO  nextflow.processor.TaskProcessor - [84/382b3c] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3alpha_mhc_0_6)
+Aug-15 11:06:12.771 [Actor Thread 3] INFO  nextflow.processor.TaskProcessor - [ca/4e7d94] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3alpha_mhc_0_8)
+Aug-15 11:06:12.778 [Actor Thread 12] INFO  nextflow.processor.TaskProcessor - [93/cd1d71] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3alpha_mhc_0_7)
+Aug-15 11:06:12.797 [Actor Thread 10] INFO  nextflow.processor.TaskProcessor - [79/1dd0d5] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3alpha_mhc_0_9)
+Aug-15 11:06:13.539 [Actor Thread 9] INFO  nextflow.processor.TaskProcessor - [28/ab7a88] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3alpha_mhc_0_10)
+Aug-15 11:06:13.567 [Actor Thread 10] INFO  nextflow.processor.TaskProcessor - [88/70de0a] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3alpha_mhc_0_12)
+Aug-15 11:06:14.038 [Actor Thread 3] INFO  nextflow.processor.TaskProcessor - [36/ff7c2b] Cached process > GENERATE_TRAIN_CONFIG (human-u_cdr3alpha_mhc_0_11)
+Aug-15 11:06:16.147 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 887888; id: 6; name: TRAIN (human-ch_cdr3alpha_mhc_0_4); status: COMPLETED; exit: 1; error: -; workDir: /home/asmirnov/dissertation_new/PASS/work/2a/49c01cdb871ffbc9c037317849cdfc started: 1755245162573; exited: 2025-08-15T08:06:12.375027688Z; ]
+Aug-15 11:06:16.149 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Aug-15 11:06:16.228 [TaskFinalizer-1] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=TRAIN (human-ch_cdr3alpha_mhc_0_4); work-dir=/home/asmirnov/dissertation_new/PASS/work/2a/49c01cdb871ffbc9c037317849cdfc
+  error [nextflow.exception.ProcessFailedException]: Process `TRAIN (human-ch_cdr3alpha_mhc_0_4)` terminated with an error exit status (1)
+Aug-15 11:06:16.276 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRAIN (human-u_cdr3beta_mhc_0_4) > jobId: 887917; workDir: /home/asmirnov/dissertation_new/PASS/work/28/16e81ffee6d75eee8971384617635c
+Aug-15 11:06:16.276 [Task submitter] INFO  nextflow.Session - [28/16e81f] Submitted process > TRAIN (human-u_cdr3beta_mhc_0_4)
+Aug-15 11:06:16.607 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 887889; id: 8; name: TRAIN (human-ch_cdr3alpha_mhc_0_5); status: COMPLETED; exit: 1; error: -; workDir: /home/asmirnov/dissertation_new/PASS/work/fe/3b93ef7c7551bfb51dd43118acff1e started: 1755245163046; exited: 2025-08-15T08:06:11.971025521Z; ]
+Aug-15 11:06:16.666 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRAIN (human-u_cdr3beta_mhc_0_5) > jobId: 887918; workDir: /home/asmirnov/dissertation_new/PASS/work/7e/1d93fd5fc2ec9607cd37942d53f218
+Aug-15 11:06:16.667 [Task submitter] INFO  nextflow.Session - [7e/1d93fd] Submitted process > TRAIN (human-u_cdr3beta_mhc_0_5)
+Aug-15 11:06:17.194 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 887890; id: 12; name: TRAIN (human-ch_cdr3alpha_mhc_0_6); status: COMPLETED; exit: 1; error: -; workDir: /home/asmirnov/dissertation_new/PASS/work/22/e86380b7cf9a0cc88e0e1a096a5684 started: 1755245163501; exited: 2025-08-15T08:06:12.763029769Z; ]
+Aug-15 11:06:17.227 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRAIN (human-u_cdr3beta_mhc_0_3) > jobId: 887919; workDir: /home/asmirnov/dissertation_new/PASS/work/a7/35b0ce85bb3217b5bae982fdafe738
+Aug-15 11:06:17.227 [Task submitter] INFO  nextflow.Session - [a7/35b0ce] Submitted process > TRAIN (human-u_cdr3beta_mhc_0_3)
+Aug-15 11:06:17.237 [TaskFinalizer-1] ERROR nextflow.processor.TaskProcessor - Error executing process > 'TRAIN (human-ch_cdr3alpha_mhc_0_4)'
+
+Caused by:
+  Process `TRAIN (human-ch_cdr3alpha_mhc_0_4)` terminated with an error exit status (1)
+
+
+Command executed:
+
+  WINEPREFIX=/home/asmirnov/dissertation_new/PASS
+  program_path=$(readlink -f OLMPASSdoMNABase.exe |  tr '/' '\')
+  config_path=$(readlink -f config.txt |  tr '/' '\')
+  mkdir -p /tmp/.wine-0
+  chmod -R 700 /tmp/.wine-0
+  wine cmd /c "start /b /wait Z:${program_path} Z:${config_path}"
+  exit 0
+
+Command exit status:
+  1
+
+Command output:
+  (empty)
+
+Command error:
+  time="2025-08-15T11:06:05+03:00" level=warning msg="Using cgroups-v1 which is deprecated in favor of cgroups-v2 with Podman v5 and will be removed in a future version. Set environment variable `PODMAN_IGNORE_CGROUPSV1_WARNING` to hide this warning."
+  time="2025-08-15T11:06:12+03:00" level=error msg="invalid internal status, try resetting the pause process with \"podman system migrate\": open /run/user/1516200105/containers/overlay-containers/d15bc16d83bbc44fa4e68a72ad5d1294b03027d894be54c463caa8f811d2ae24/userdata/conmon.pid: no such file or directory"
+
+Work dir:
+  /home/asmirnov/dissertation_new/PASS/work/2a/49c01cdb871ffbc9c037317849cdfc
+
+Container:
+  docker.io/scottyhardy/docker-wine
+
+Tip: when you have fixed the problem you can continue the execution adding the option `-resume` to the run command line
+Aug-15 11:06:17.241 [TaskFinalizer-3] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=TRAIN (human-ch_cdr3alpha_mhc_0_6); work-dir=/home/asmirnov/dissertation_new/PASS/work/22/e86380b7cf9a0cc88e0e1a096a5684
+  error [nextflow.exception.ProcessFailedException]: Process `TRAIN (human-ch_cdr3alpha_mhc_0_6)` terminated with an error exit status (1)
+Aug-15 11:06:17.247 [TaskFinalizer-2] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=TRAIN (human-ch_cdr3alpha_mhc_0_5); work-dir=/home/asmirnov/dissertation_new/PASS/work/fe/3b93ef7c7551bfb51dd43118acff1e
+  error [nextflow.exception.ProcessFailedException]: Process `TRAIN (human-ch_cdr3alpha_mhc_0_5)` terminated with an error exit status (1)
+Aug-15 11:06:17.257 [TaskFinalizer-1] DEBUG nextflow.Session - Session aborted -- Cause: Process `TRAIN (human-ch_cdr3alpha_mhc_0_4)` terminated with an error exit status (1)
+Aug-15 11:06:17.291 [main] DEBUG nextflow.Session - Session await > all processes finished
+Aug-15 11:06:17.291 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Aug-15 11:06:17.302 [main] WARN  n.processor.TaskPollingMonitor - Killing running tasks (30)
+Aug-15 11:06:17.566 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 887896; id: 23; name: TRAIN (mouse-u_cdr3alpha_mhc_0_3); status: COMPLETED; exit: 1; error: -; workDir: /home/asmirnov/dissertation_new/PASS/work/27/9a61a469e65618022bd8cb1082d1eb started: 1755245165982; exited: 2025-08-15T08:06:12.37902771Z; ]
+Aug-15 11:06:17.569 [Task monitor] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=TRAIN (mouse-u_cdr3alpha_mhc_0_3); work-dir=/home/asmirnov/dissertation_new/PASS/work/27/9a61a469e65618022bd8cb1082d1eb
+  error [java.util.concurrent.RejectedExecutionException]: Task java.util.concurrent.FutureTask@37d84e59[Not completed, task = java.util.concurrent.Executors$RunnableAdapter@3d70e57[Wrapped task = nextflow.processor.TaskPollingMonitor$$Lambda/0x00007fa83b54f538@6992923d]] rejected from java.util.concurrent.ThreadPoolExecutor@100a76fb[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3]
+Aug-15 11:06:17.572 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: slurm) - terminating tasks monitor poll loop
+Aug-15 11:06:17.877 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=3; ignoredCount=0; cachedCount=160; pendingCount=127; submittedCount=3; runningCount=-3; retriesCount=0; abortedCount=30; succeedDuration=0ms; failedDuration=40.8s; cachedDuration=2m 6s;loadCpus=-3; loadMemory=0; peakRunning=30; peakCpus=30; peakMemory=0; ]
+Aug-15 11:06:17.877 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow completed -- saving trace file
+Aug-15 11:06:17.882 [main] DEBUG nextflow.trace.ReportObserver - Workflow completed -- rendering execution report
+Aug-15 11:06:19.276 [main] DEBUG nextflow.trace.TimelineObserver - Workflow completed -- rendering execution timeline
+Aug-15 11:06:20.757 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Aug-15 11:06:21.620 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

@@ -1,0 +1,2 @@
+2025-08-14 15:01:06	6m 43s	mad_noyce	ERR	d0fd39dfcc9ff758577786bb50e0b40f	8aa69ca5-cc83-469a-99d7-14e5390be4cb	nextflow run main.nf -profile cluster
+2025-08-14 15:11:57	36m 44s	mad_kilby	OK	d0fd39dfcc9ff758577786bb50e0b40f	5be69e6b-9b10-4063-bd80-d3a343314b79	nextflow run main.nf -profile cluster

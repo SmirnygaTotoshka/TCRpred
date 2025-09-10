@@ -1,0 +1,21 @@
+task_id	hash	native_id	name	status	exit	submit	duration	realtime	%cpu	peak_rss	peak_vmem	rchar	wchar
+5	63/2d02b8	2083793	GENERATE_TRAIN_CONFIG (human-ch_cdr3beta_epitope_0_7)	COMPLETED	0	2025-08-30 00:50:09.026	363ms	14ms	61.0%	0	0	117.2 KB	387 B
+4	2d/243f62	2083779	GENERATE_TRAIN_CONFIG (human-ch_cdr3beta_epitope_0_6)	COMPLETED	0	2025-08-30 00:50:08.967	521ms	28ms	20.5%	0	0	115.2 KB	387 B
+7	8c/557121	2083847	GENERATE_TRAIN_CONFIG (human-ch_cdr3beta_epitope_0_9)	COMPLETED	0	2025-08-30 00:50:09.118	641ms	24ms	16.9%	0	0	115.2 KB	387 B
+6	77/0f64dd	2083831	GENERATE_TRAIN_CONFIG (human-ch_cdr3beta_epitope_0_8)	COMPLETED	0	2025-08-30 00:50:09.097	686ms	30ms	27.9%	0	0	115.2 KB	387 B
+8	27/46a9c6	2083888	GENERATE_TRAIN_CONFIG (human-ch_cdr3beta_epitope_0_10)	COMPLETED	0	2025-08-30 00:50:09.165	635ms	51ms	12.9%	0	0	117.2 KB	389 B
+1	22/72bb07	2084168	GENERATE_TRAIN_CONFIG (human-ch_cdr3beta_epitope_0_3)	COMPLETED	0	2025-08-30 00:50:09.496	492ms	30ms	24.7%	0	0	117.2 KB	387 B
+9	15/b303e2	2084136	GENERATE_TRAIN_CONFIG (human-ch_cdr3beta_epitope_0_11)	COMPLETED	0	2025-08-30 00:50:09.454	551ms	24ms	32.7%	0	0	117.2 KB	389 B
+10	3e/0ab7ab	2084102	GENERATE_TRAIN_CONFIG (human-ch_cdr3beta_epitope_0_12)	COMPLETED	0	2025-08-30 00:50:09.399	657ms	90ms	12.4%	0	0	117.2 KB	389 B
+2	1b/1f36b2	2084000	GENERATE_TRAIN_CONFIG (human-ch_cdr3beta_epitope_0_4)	COMPLETED	0	2025-08-30 00:50:09.287	835ms	49ms	12.7%	0	0	115.2 KB	387 B
+3	e2/0dcee1	2084057	GENERATE_TRAIN_CONFIG (human-ch_cdr3beta_epitope_0_5)	COMPLETED	0	2025-08-30 00:50:09.348	784ms	70ms	12.3%	0	0	115.2 KB	387 B
+14	95/b40434	2084611	TRAIN (human-ch_cdr3beta_epitope_0_10)	FAILED	125	2025-08-30 00:50:10.019	2m 5s	2m 5s	-	-	-	-	-
+11	6a/d362b0	2084470	TRAIN (human-ch_cdr3beta_epitope_0_7)	ABORTED	-	2025-08-30 00:50:09.858	-	-	-	-	-	-	-
+12	dd/43b69d	2084557	TRAIN (human-ch_cdr3beta_epitope_0_6)	ABORTED	-	2025-08-30 00:50:09.942	-	-	-	-	-	-	-
+13	6f/baf125	2084602	TRAIN (human-ch_cdr3beta_epitope_0_9)	ABORTED	-	2025-08-30 00:50:09.998	-	-	-	-	-	-	-
+15	9f/689c15	2084629	TRAIN (human-ch_cdr3beta_epitope_0_8)	ABORTED	-	2025-08-30 00:50:10.031	-	-	-	-	-	-	-
+16	e0/fba230	2084670	TRAIN (human-ch_cdr3beta_epitope_0_3)	ABORTED	-	2025-08-30 00:50:10.142	-	-	-	-	-	-	-
+17	83/d4b94b	2084677	TRAIN (human-ch_cdr3beta_epitope_0_11)	ABORTED	-	2025-08-30 00:50:10.173	-	-	-	-	-	-	-
+18	b4/8a5fc6	2084679	TRAIN (human-ch_cdr3beta_epitope_0_12)	ABORTED	-	2025-08-30 00:50:10.188	-	-	-	-	-	-	-
+19	f9/ba88fc	2084684	TRAIN (human-ch_cdr3beta_epitope_0_4)	ABORTED	-	2025-08-30 00:50:10.199	-	-	-	-	-	-	-
+20	e2/8583d5	2084703	TRAIN (human-ch_cdr3beta_epitope_0_5)	ABORTED	-	2025-08-30 00:50:10.257	-	-	-	-	-	-	-
