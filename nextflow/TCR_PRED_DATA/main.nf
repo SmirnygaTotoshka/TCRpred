@@ -16,7 +16,7 @@ process FETCH{
     script:
         def optional = option == "mysql" ? "-s ${secrets.MYSQL_DB_SERVER} -u ${secrets.MYSQL_DB_USER} -p ${secrets.MYSQL_DB_PASSWORD} -d ${database}" : ""
         """
-        python ${params.path_to_scripts}/TCR-pred/tcr_data_acquire.py  ${option} ${optional} -o \${PWD}
+        python ${workflow.projectDir}/scripts/tcr_data_acquire.py  ${option} ${optional} -o \${PWD}
         """
     stub:
         """
@@ -37,7 +37,7 @@ process CLEAN{
 
     script:
         """
-        python ${params.path_to_scripts}/TCR-pred/tcr_data_clean.py -d ${database} -i ${raw_table[0]} -o \${PWD}
+        python ${workflow.projectDir}/scripts/tcr_data_clean.py -d ${database} -i ${raw_table[0]} -o \${PWD}
         """
     stub:
         """
@@ -85,7 +85,7 @@ process CALC_STAT{
     def database = table_name == prefix ? table_name : table_name.split("_")[0]
     if (prefix == "tcr_epitope"){
         """
-        python ${params.path_to_scripts}/TCR-pred/tcr_data_statistics.py \
+        python ${workflow.projectDir}/scripts/tcr_data_statistics.py \
         --input ${table[0]} \
         --output ${database}_epi.db \
         --epitope \
@@ -97,7 +97,7 @@ process CALC_STAT{
         head -n 1 ${table[0]} > tmp.csv
         awk -F ";" -v d="\$d" '{if (\$2 == d) {print \$0}}' ${table[0]} >> tmp.csv
         
-        python ${params.path_to_scripts}/TCR-pred/tcr_data_statistics.py \
+        python ${workflow.projectDir}/scripts/tcr_data_statistics.py \
         --input tmp.csv \
         --output \${d}_epi.db \
         --epitope \
@@ -107,7 +107,7 @@ process CALC_STAT{
     }
     else if (prefix == "tcr_mhc"){
         """
-        python ${params.path_to_scripts}/TCR-pred/tcr_data_statistics.py \
+        python ${workflow.projectDir}/scripts/tcr_data_statistics.py \
         --input ${table[0]} \
         --output ${database}_mhc.db \
         --mhc \
@@ -119,7 +119,7 @@ process CALC_STAT{
         head -n 1 ${table[0]} > tmp.csv
         awk -F ";" -v d="\$d" '{if (\$2 == d) {print \$0}}' ${table[0]} >> tmp.csv
         
-        python ${params.path_to_scripts}/TCR-pred/tcr_data_statistics.py \
+        python ${workflow.projectDir}/scripts/tcr_data_statistics.py \
         --input tmp.csv \
         --output \${d}_mhc.db \
         --mhc \
@@ -158,7 +158,7 @@ process SPLIT_SAMPLE{
     target_chain = "${parameters[2]}"
     target_activity = "${prefix}".split("_")[1]
     sample = table.query("Species == @target_species and Chain == @target_chain")
-    sample.to_csv(f"{target_species}-cdr3{target_chain}-{target_charged}-{target_activity}.csv", sep = ";", index = False, header = True)
+    sample.to_csv(f"{target_species}--cdr3{target_chain}-{target_charged}-{target_activity}.csv", sep = ";", index = False, header = True)
     """
     stub:
     """
@@ -173,65 +173,39 @@ process SPLIT_SAMPLE{
     """
 }
 
-process CONVERT{ 
-    tag "${csv_table[0]}"
-    conda "${params.path_to_converter}/environment.yml"
-
-    input:
-        path csv_table
-
-    output:
-        path "*.sdf"
-    script:
-    def basename = csv_table[0].baseName.split('-')
-    def charged = basename[2] == "ch"
-    def outputBasename = basename[0] + "-" + basename[2] + "_" + basename[1] + "_" + basename[3] + "_0_train"
-    """
-    echo '{
-    "input": "${csv_table[0]}", 
-    "output": "'\$PWD'", 
-    "column": "Structure",
-    "charged": ${charged}, 
-    "alphabet": "protein", 
-    "threads": ${task.cpus}, 
-    "filename": "${outputBasename}",
-    "delete_tmp": true,
-    "timeout": ${task.ext.query_timeout}
-    }' >  config.json
-
-    python ${params.path_to_converter}/SeqToSDF.py config.json
-
-    input_lines=\$(wc -l ${csv_table[0]} | tr ' ' '\\n' | head -1)
-    expected=\$((\$input_lines-1))
-    observed=\$(grep -c "SUCCESS" ${outputBasename}_log.txt)
-    if [[ \$observed -ne \$expected ]]; then
-        echo 'Has failed records to convert!'
-        exit 1
-    fi
-    """
-    stub:
-    def basename = csv_table.baseName.split('-')
-    def charged = basename[2] == "ch"
-    def outputBasename = basename[0] + "-" + basename[2] + "_" + basename[1] + "_" + basename[3] + "_0_train"
-    """
-    touch ${outputBasename}.sdf
-    """
-}
 
 workflow {
-        csv_records = Channel.fromPath(params.input) | splitCsv(sep: ";", header: true)
-        datasets = csv_records | FETCH | CLEAN
+    csv_records = Channel.fromPath(params.input) | splitCsv(sep: ";", header: true)
+    datasets = csv_records | FETCH | CLEAN
         
-        list_datasets = datasets.epitope.mix(datasets.mhc) | groupTuple
-        merged_datasets = MERGE(list_datasets)
+    list_datasets = datasets.epitope.mix(datasets.mhc) | groupTuple
+    merged_datasets = MERGE(list_datasets)
         
-        statistics = CALC_STAT(merged_datasets)
+    statistics = CALC_STAT(merged_datasets)
 
-        species = Channel.of("human", "mouse")
-        charged = Channel.of("ch", "u") 
-        chains = Channel.of("alpha", "beta")
+    species = Channel.of("human", "mouse")
+    charged = Channel.of("ch", "u") 
+    chains = Channel.of("alpha", "beta")
 
-        split_parameters = species.combine(charged).combine(chains).unique()
-        converted = SPLIT_SAMPLE(merged_datasets, split_parameters) | CONVERT
+    split_parameters = species.combine(charged).combine(chains).unique()
+    splitted_datasets = SPLIT_SAMPLE(merged_datasets, split_parameters)
+        
+    publish:
+        statistics = statistics
+        total = merged_datasets
+        splitted = splitted_datasets
 }
 
+output{
+    statistics {
+        path 'statistics'
+    }
+    
+    total {
+        path 'total'
+    }
+    
+    splitted {
+        path 'splitted'
+    }
+}
