@@ -7,6 +7,7 @@ from mysql.connector import connect, Error as MysqlError
 from database import Database
 
 class IEDB(Database):
+#TODO common rules for tcr-epi and tcr-mhc
 
     def __init__(self, server: str, user: str, password:str, database:str = "IEDB"):
         assert database == "IEDB" or database == "CEDAR", f"Неподходящий объект для БД {database}"
