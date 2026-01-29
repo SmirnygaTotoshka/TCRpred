@@ -1,23 +1,20 @@
 import pandas as pd
 import traceback
-import uuid
-import mhcgnomes
 import requests
 import tempfile
 from datetime import datetime
 from database import Database
 from tools import get_chrome_driver
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import WebDriverException
-#TODO common rules for tcr-epi and tcr-mhc
+
 class VDJdb(Database):
 
     def __init__(self):
         super().__init__("VDJdb")
-        self._final_columns_epitope = {
+        self._tcr_epitope_schema = {
                                 "receptor_id":"ReceptorID",  
                                 "Database": "Database",
                                 "Gene": "Chain",
@@ -30,18 +27,18 @@ class VDJdb(Database):
                                 "D":"D",
                                 "J":"J"}
         
-        self._final_columns_mhc = {
+        self._tcr_mhc_schema = {
                                 "receptor_id":"ReceptorID", 
                                 "Database": "Database",
                                 "Gene": "Chain",
                                 "Species":"Species",
                                 "CDR3": "Structure",
-                                "mhc_chain":"Activity",
+                                self._mhc_fix_col:"Activity",
                                 "V":"V",
                                 "D":"D",
                                 "J":"J"}
 
-        self._tcr_epitope_filters = {
+        self._filter_rules = {
             "has_reference": "Reference.notna()",
             "ab_chains": "Gene == 'TRA' or Gene == 'TRB'",
             "included_species": "Species.isin(@self._included_species)",
@@ -49,12 +46,19 @@ class VDJdb(Database):
             "valid_cdr3": "CDR3.str.contains(@self._seq_pattern)",
             "has_epitope": "Epitope.notna()",
             "valid_epitope": "Epitope.str.contains(@seq_pattern)",
-        }
+        } #TODO
         self._tcr_mhc_filters = {
             "concordant_species": "not (mhc_chain.str.contains('HLA') and Species == 'mouse') or not ((mhc_chain.str.contains('H2') and Species == 'human')",
             "canonical_mhc": "`MHC class` == 'I' or `MHC class` == 'II'",
             "not_b2m": "mhc_chain != 'B2M'",
         }  
+
+        self._species_cols = ["Species"]
+        self._species_names = {"HomoSapiens":"human",
+                         "MusMusculus":"mouse"
+                        }
+        self._receptor_col = "receptor_id"
+        self._mhc_value_columns = ["MHC A","MHC B"]
 
 
     def acquire(self):
@@ -94,91 +98,13 @@ class VDJdb(Database):
             print("Finished")
             return ready
     
-    def clean_tcr_epitope(self, raw_data: pd.DataFrame):
-        """
-        For VDJdb use these filters:
+    def clean(self, raw_data: pd.DataFrame, dataset: str) -> tuple[pd.DataFrame,pd.DataFrame]:     
+        raw_data.loc[raw_data["Gene"] == "TRA","Gene"] = "alpha"
+        raw_data.loc[raw_data["Gene"] == "TRB","Gene"] = "beta"
 
-        TCR-EPI:
-            1) Has reference
-            2) receptor - alphabeta and chain is alpha or beta
-            3) epitopes with valid sequence.
-            4) cdr3 with valid sequence
-            5) receptor, host organism is human or mouse
+        self._dup_cols = ["Gene", "CDR3", "Epitope","Species"] if dataset == "tcr-epitope" else ["Gene", "CDR3", self._mhc_fix_col, "Species"]
+        return super().clean(raw_data, dataset)
 
-        TCR-MHC:
-            1) MHC first or second class
-            3) Chains are known until certain protein or more info
-
-        """
-        cleaned_data = raw_data.copy(deep=True)
-        # fix species. Experiment show that in all rows between all these cols values are identical
-        cleaned_data.loc[cleaned_data["Species"] == "HomoSapiens","Species"] = "human"
-        cleaned_data.loc[cleaned_data["Species"] == "MusMusculus","Species"] = "mouse"
-        cleaned_data.loc[cleaned_data["Gene"] == "TRA","Gene"] = "alpha"
-        cleaned_data.loc[cleaned_data["Gene"] == "TRB","Gene"] = "beta"
-
-        for filter, eval in self._tcr_epitope_filters.items():
-            cleaned_data[filter] = cleaned_data.eval(eval)        
-        
-        unique_id = cleaned_data["receptor_id"].unique()
-        replacement = {k:str(uuid.uuid4()) for k in unique_id}
-        cleaned_data["receptor_id"] = cleaned_data["receptor_id"].map(replacement)
-
-        filter_names = list(self._tcr_epitope_filters.keys())
-        cleaned_data["PASSED"] = cleaned_data.loc[:,filter_names].all()
-        selected_columns = list(self._final_columns_epitope.keys())
-        return (
-            cleaned_data.query("PASSED").loc[:,selected_columns].rename(columns = self._final_columns_epitope),
-            cleaned_data
-        )
-
-    
-    def clean_tcr_mhc(self, raw_data: pd.DataFrame):
-        """
-        For VDJdb use these filters:
-
-        TCR-EPI:
-            1) Has reference
-            2) receptor - alphabeta and chain is alpha or beta
-            3) epitopes with valid sequence.
-            4) cdr3 with valid sequence
-            5) receptor, host organism is human or mouse
-            +
-            1) MHC first or second class
-            3) Chains are known until certain protein or more info
-
-        Nothing to return. Assign values to _tcr_epi and _tcr_mhc
-        """
-        _, data_with_filters = self.clean_tcr_epitope(raw_data)
-        
-        # melt all mhc alleles to one column
-        mhc_value_columns = ["MHC A","MHC B"]
-        iedb_mhc_reshaped = pd.melt(data_with_filters, 
-                              id_vars = data_with_filters.columns[~data_with_filters.columns.isin(mhc_value_columns)],                  
-                              value_vars = mhc_value_columns,
-                              var_name = "mhc_chain_type",
-                              value_name = "mhc_chain",
-                              ignore_index = True)
-        
-        for i in iedb_mhc_reshaped.index:
-            try:
-                iedb_mhc_reshaped.loc[i, "mhc_chain"] = self.fix_allele(iedb_mhc_reshaped.loc[i, "mhc_chain"])
-                iedb_mhc_reshaped.loc[i, "MHC class"] = self.get_mhc_class(iedb_mhc_reshaped.loc[i, "mhc_chain"])
-                iedb_mhc_reshaped.loc[i, "success_parse"] = True
-            except mhcgnomes.ParseError:
-                iedb_mhc_reshaped.loc[i, "success_parse"] = False
-
-        for filter, eval in self._tcr_epitope_filters.items():
-            iedb_mhc_reshaped[filter] = iedb_mhc_reshaped.eval(eval)
-
-        filter_names = list(self._tcr_epitope_filters.keys()).extend(list(self._tcr_mhc_filters.keys())).append("success_parse")
-        iedb_mhc_reshaped["PASSED"] = iedb_mhc_reshaped.loc[:,filter_names].all()
-        selected_columns = list(self._final_columns_mhc.keys())
-        return (
-            iedb_mhc_reshaped.query("PASSED").loc[:,selected_columns].rename(columns = self._final_columns_mhc),
-            iedb_mhc_reshaped
-        )
-    
     def get_latest_update_date(self):
         vdjdb_url = 'https://vdjdb.cdr3.net/overview'
         vdjdb_last_update_xpath = "/html/body/application/div/overview/div/div/div/div/pre/code"
