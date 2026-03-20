@@ -141,7 +141,7 @@ class McPAS(Database):
                 clean_str = last_update_string.replace("The database was last updated on: ", "")
                 last_update_date = datetime.strptime(clean_str, "%B %d, %Y")
         except WebDriverException as e:
-            last_update_date = datetime.strptime("10.09.2022","dd.mm.yyyy")
+            last_update_date = datetime.strptime("10.09.2022","%d.%m.%Y")
         finally:
             if driver is not None:
                 driver.quit()

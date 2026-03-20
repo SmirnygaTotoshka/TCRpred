@@ -115,4 +115,4 @@ class McPAS(Database):
         
     
     def get_latest_update_date(self):
-        return datetime.strptime("24.07.2024","dd.mm.yyyy")
+        return datetime.strptime("24.07.2024","%d.%m.%Y")

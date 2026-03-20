@@ -53,7 +53,7 @@ class IEDB(Database):
             "is_complete_mhc": "restriction_level == 'complete molecule'",
             "without_mutations": "chain_i_mutation.isna() and chain_ii_mutation.isna()",
             "canonical_mhc": "`class` == 'I' or `class` == 'II'",
-            "not_b2m": "mhc_chain != 'Beta-2-microglobulin'"
+            "not_b2m": "@self._mhc_fix_col != 'Beta-2-microglobulin'"
         }#TODO
 
         self._species_cols = ["species_name_receptor","species_name_chain","mhc_source","host_organism"]
@@ -61,7 +61,7 @@ class IEDB(Database):
                          "Mus musculus":"mouse"
                         }
         self._receptor_col = "curated_receptor_id"
-        self._mhc_value_columns = ["chain_i_name","chain_ii_name"]
+        self._mhc_cols = ["chain_i_name","chain_ii_name"]
 
     def acquire(self) -> pd.DataFrame | None:
         '''
@@ -162,7 +162,8 @@ class IEDB(Database):
 
             ready = pd.merge(tcell_tcr_mhc,
                             epitope_information_ready,
-                            on = "curated_epitope_id")       
+                            on = "curated_epitope_id")
+            ready["Database"] = self._database
         except MysqlError as e:
             traceback.print_exc()
             print(f"Something with MySQL server connection {e}")
@@ -173,13 +174,13 @@ class IEDB(Database):
     def get_latest_update_date(self) -> tuple[datetime,datetime]:
         if self._database == 'IEDB':
             return (
-                datetime.strptime("25.01.2026", "dd.mm.yyyy"),
-                datetime.strptime("18.01.2026", "dd.mm.yyyy")
+                datetime.strptime("25.01.2026", "%d.%m.%Y"),
+                datetime.strptime("18.01.2026", "%d.%m.%Y")
             )
         elif self._database == 'CEDAR':
             return (
-                datetime.strptime("25.01.2026", "dd.mm.yyyy"),
-                datetime.strptime("06.01.2026", "dd.mm.yyyy")
+                datetime.strptime("25.01.2026", "%d.%m.%Y"),
+                datetime.strptime("06.01.2026", "%d.%m.%Y")
             )
         else:
             raise ValueError(f"Incorrect database {self._database}")

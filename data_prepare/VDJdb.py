@@ -120,7 +120,7 @@ class VDJdb(Database):
                 clean_str = last_update_string.replace("Last updated on ", "")
                 last_update_date = datetime.strptime(clean_str, "%d %B, %Y")
         except WebDriverException:
-            last_update_date = datetime.strptime("28.12.2026","dd.mm.yyyy")
+            last_update_date = datetime.strptime("28.12.2026","%d.%m.%Y")
         finally:
             if driver is not None:
                 driver.quit()

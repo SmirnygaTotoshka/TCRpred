@@ -1,4 +1,4 @@
-name: bioinfo_env
+name: TCRpred-data-prepare
 channels:
   - conda-forge
   - bioconda

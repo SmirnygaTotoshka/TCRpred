@@ -172,4 +172,4 @@ class MIRA(Database):
 
     
     def get_latest_update_date(self):
-        return datetime.strptime("04.08.2020","dd.mm.yyyy")
+        return datetime.strptime("04.08.2020","%d.%m.%Y")

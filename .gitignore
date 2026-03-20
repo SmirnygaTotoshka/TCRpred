@@ -2,3 +2,4 @@
 **/.nextflow/*
 **/.nextflow.log*
 **/*.pyc
+data
