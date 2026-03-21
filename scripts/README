@@ -1,0 +1,7 @@
+
+## tcr_data_acquire
+
+```
+python scripts/tcr_data_acquire.py mysql -s 81.177.141.179 -p <password> -u iedb_svc -d IEDB -o raw-data/IEDB
+python scripts/tcr_data_acquire.py db -o raw-data/db
+```
