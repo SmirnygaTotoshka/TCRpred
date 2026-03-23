@@ -20,7 +20,7 @@ output_option = click.option("-o","--output","output", required = True, type=str
 
 def is_valid_mhc(allele):
     try:
-        _ = mhcgnomes.parse(allele)
+        _ = mhcgnomes.parse(allele.split(" ")[0])# Нужно  избавитьсяот всех примечаний, например альфа/бета в IEDB у мышинных аллелей
     except (mhcgnomes.errors.ParseError, TypeError):
         return False
     else:

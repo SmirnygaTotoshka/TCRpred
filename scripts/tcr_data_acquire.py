@@ -327,7 +327,7 @@ def pird(output):
         time.sleep(30)  # Увеличьте время ожидания при необходимости
         print("Convert...")
         tbadb = pd.read_excel(os.path.join(output, "TBAdb.xlsx"), sheet_name = "TCR-AB")
-        tbadb.to_csv(os.path.join(output,f"TBAdb.csv"),sep = ";", index = False)
+        tbadb.to_csv(os.path.join(output,f"PIRD.csv"),sep = ";", index = False)
         
     except (TimeoutException, NoSuchElementException, WebDriverException) as e:
         traceback.print_exc()
