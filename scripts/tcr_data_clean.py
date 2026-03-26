@@ -53,6 +53,9 @@ def fix_mhc_name(allele_str, chain = 'alpha'):
             raise ValueError('Wrong species. Only human and mouse are allowed.')
     except (mhcgnomes.errors.ParseError, TypeError, ValueError):
         return pd.NA
+    except AttributeError:
+        print(f'Attribute error {allele_first}')
+        return pd.NA
 
 
 
@@ -221,24 +224,115 @@ def vdjdb(input, output):
     wide.to_csv(os.path.join(output, "VDJdb_clean.csv"), sep = ";", index = False)
 
         
-
 @main.command()
 @input_option
 @output_option
 def mcpas(input, output):
-    raw_data = pd.read_csv(input, sep = ";", header = 0)
+    raw_data = pd.read_csv(input, sep = ";", header = 0).query("Species.notna()")
+    
+    def calculate_receptor_id(tbl: pd.DataFrame, column_id: str):
+        data = tbl.copy(deep=True)
+        #receptor data has already wide format
+        for i in data.index:
+            data.loc[i,"id"] = str(uuid.uuid4())
 
+        return data
+    
+    print(raw_data.shape)
+    print("Unificate species")
+    raw_data.loc[raw_data["Species"].str.contains("Human"),"Species"] = "human"
+    raw_data.loc[raw_data["Species"].str.contains("Mouse"),"Species"] = "mouse"
+    
+    raw_data['valid_ii_name'] = "B2M" # not valid mhcii, they will be filtered
+    raw_data['valid_i_name'] = raw_data['MHC'].apply(lambda x: fix_mhc_name(x, 'alpha'))
+    raw_data["database"] = "McPAS"
+    
+    table_schema = {
+            "id": "id",
+            "CDR3.alpha.aa": "cdr3_alpha",
+            "CDR3.beta.aa": "cdr3_beta",
+            "Epitope.peptide": "epitope",
+            "valid_i_name": "mhc_alpha",
+            "valid_ii_name": "mhc_beta",
+            "mhc_class": "mhc_class",
+            "Species": "host_species",
+            "Pathology": "epitope_species",
+            "Antigen.protein": "epitope_source",
+            "TRAV": "V_alpha",
+            "TRBV": "V_beta",
+            "TRBD": "D_beta",
+            "TRAJ": "J_alpha",
+            "TRBJ": "J_beta", 
+            "database": "database"
+        }
+    
+    print("Apply filters")
+    clean_data = raw_data.\
+            query("`PubMed.ID`.notna()").\
+            query("Species.isin(@HOST_SPECIES)").\
+            query("`CDR3.alpha.aa`.fillna('').str.contains(@PROTEIN_CHECK) or `CDR3.beta.aa`.fillna('').str.contains(@PROTEIN_CHECK)").\
+            query("`Epitope.peptide`.notna()").\
+            query("`Epitope.peptide`.str.contains(@PROTEIN_CHECK)").\
+            query("valid_i_name.notna() and valid_ii_name.notna()")
+    
+    clean_data['mhc_class'] = clean_data['valid_i_name'].apply(lambda x: 'I' if mhcgnomes.parse(x).is_class1 else 'II')
+    clean_data = clean_data.query("mhc_class == 'I'") # no valid mhcII entries
+    
+    print(clean_data.shape)
+    print("Get id")
+    clean_data_with_id = calculate_receptor_id(clean_data,"receptor_id")
+    clean_data_selected = clean_data_with_id.filter(items = list(table_schema.keys()), axis = 1).rename(columns = table_schema)
+    clean_data_selected["D_alpha"] = pd.NA
+    
+    print("Save")
+    clean_data_selected.to_csv(os.path.join(output, "McPAS_clean.csv"), sep = ";", index = False)
+    
+    
 @main.command()
 @input_option
 @output_option
 def pird(input, output):
     raw_data = pd.read_csv(input, sep = ";", header = 0)
-            
-@main.command()
-@input_option
-@output_option
-def mira(input, output):
-    raw_data = pd.read_csv(input, sep = ";", header = 0)
+    print(raw_data.shape)
+    print("Calculate common fields")
+    raw_data['host_species'] = 'human'
+    raw_data['id'] = raw_data['ICDname'].apply(lambda _: str(uuid.uuid4()))
+    raw_data['HLA'] = "HLA-" + raw_data['HLA'] 
+    raw_data['valid_ii_name'] = "B2M" # not valid mhcii, they will be filtered
+    raw_data['valid_i_name'] = raw_data['HLA'].apply(lambda x: fix_mhc_name(x, 'alpha'))
+    raw_data["database"] = "PIRD"      
+    table_schema = {
+            "id": "id",
+            "CDR3.alpha.aa": "cdr3_alpha",
+            "CDR3.beta.aa": "cdr3_beta",
+            "Antigen.sequence": "epitope",
+            "valid_i_name": "mhc_alpha",
+            "valid_ii_name": "mhc_beta",
+            "mhc_class": "mhc_class",
+            "host_species": "host_species",
+            "Disease.name": "epitope_species",
+            "Antigen": "epitope_source",
+            "Valpha": "V_alpha",
+            "Vbeta": "V_beta",
+            "Vbeta": "D_beta",
+            "Jbeta": "J_alpha",
+            "Jbeta": "J_beta", 
+            "database": "database"
+        }
+    print('Apply filters')
+    clean_data = raw_data.\
+              query("`Pubmed.id`.notna()").\
+              query("`CDR3.alpha.aa`.fillna('').str.contains(@PROTEIN_CHECK) or `CDR3.beta.aa`.fillna('').str.contains(@PROTEIN_CHECK)").\
+              query("`Antigen.sequence`.notna()").\
+              query("`Antigen.sequence`.str.contains(@PROTEIN_CHECK)").\
+              query("valid_i_name.notna() and valid_ii_name.notna()")
+    print(clean_data.shape)
+    clean_data['mhc_class'] = clean_data['valid_i_name'].apply(lambda x: 'I' if mhcgnomes.parse(x).is_class1 else 'II')
+    clean_data = clean_data.query("mhc_class == 'I'") # no valid mhcII entries
+    clean_data["D_alpha"] = pd.NA
+    clean_data_selected = clean_data.filter(items = list(table_schema.keys()), axis = 1).rename(columns = table_schema)
+    print("Save")
+    clean_data_selected.to_csv(os.path.join(output, "PIRD_clean.csv"), sep = ";", index = False)
 
 if __name__ == "__main__":
     main()
