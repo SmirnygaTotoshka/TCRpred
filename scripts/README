@@ -1,7 +1,34 @@
 
 ## tcr_data_acquire
 
+db is VDJdb, McPAS, PIRD, see help
 ```
-python scripts/tcr_data_acquire.py mysql -s 81.177.141.179 -p <password> -u iedb_svc -d IEDB -o raw-data/IEDB
+python scripts/tcr_data_acquire.py mysql -s 81.177.141.179 -p <password> -u iedb_svc -d IEDB -o data/raw-data/IEDB
 python scripts/tcr_data_acquire.py db -o raw-data/db
+```
+
+## tcr_data_clean
+
+```
+python scripts/tcr_data_clean.py mysql -i data/raw-data/IEDB/IEDB.csv -o data/clean-data -d IEDB
+python scripts/tcr_data_clean.py db -i data/raw-data/db/db.csv -o data/clean-data
+```
+
+## tcr_data_merge
+
+```
+python scripts/tcr_data_merge.py simple -o data data/cleaned-data/IEDB_clean.csv data/cleaned-data/CEDAR_clean.csv data/cleaned-data/VDJdb_clean.csv data/cleaned-data/McPAS_clean.csv data/cleaned-data/PIRD_clean.csv
+
+python scripts/tcr_data_merge.py epitope --keep -o data/merged_full/ data/cleaned-data/IEDB_clean.csv data/cleaned-data/CEDAR_clean.csv data/cleaned-data/VDJdb_clean.csv data/cleaned-data/McPAS_clean.csv data/cleaned-data/PIRD_clean.csv
+
+python scripts/tcr_data_merge.py mhc --keep -o data/merged_full/ data/cleaned-data/IEDB_clean.csv data/cleaned-data/CEDAR_clean.csv data/cleaned-data/VDJdb_clean.csv data/cleaned-data/McPAS_clean.csv data/cleaned-data/PIRD_clean.csv
+```
+
+## tcr_data_statistics
+
+Запускать на компе, где есть возможность смотреть в браузер.
+```
+conda env create -f envs/tcr_statistics.yml
+conda activate tcr_statistics 
+streamlit run scripts\tcr_data_statistics.py
 ```
