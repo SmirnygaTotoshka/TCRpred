@@ -270,7 +270,7 @@ def mcpas(input, output):
     clean_data = raw_data.\
             query("`PubMed.ID`.notna()").\
             query("Species.isin(@HOST_SPECIES)").\
-            query("`CDR3.alpha.aa`.fillna('').str.contains(@PROTEIN_CHECK) or `CDR3.beta.aa`.fillna('').str.contains(@PROTEIN_CHECK)").\
+            query("(`CDR3.alpha.aa`.fillna('').str.contains(@PROTEIN_CHECK) or `CDR3.alpha.aa`.isna()) and (`CDR3.beta.aa`.fillna('').str.contains(@PROTEIN_CHECK) or `CDR3.beta.aa`.isna())").\
             query("`Epitope.peptide`.notna()").\
             query("`Epitope.peptide`.str.contains(@PROTEIN_CHECK)").\
             query("valid_i_name.notna() and valid_ii_name.notna()")
@@ -322,7 +322,7 @@ def pird(input, output):
     print('Apply filters')
     clean_data = raw_data.\
               query("`Pubmed.id`.notna()").\
-              query("`CDR3.alpha.aa`.fillna('').str.contains(@PROTEIN_CHECK) or `CDR3.beta.aa`.fillna('').str.contains(@PROTEIN_CHECK)").\
+              query("(`CDR3.alpha.aa`.fillna('').str.contains(@PROTEIN_CHECK) or `CDR3.alpha.aa`.isna()) and (`CDR3.beta.aa`.fillna('').str.contains(@PROTEIN_CHECK) or `CDR3.beta.aa`.isna())").\
               query("`Antigen.sequence`.notna()").\
               query("`Antigen.sequence`.str.contains(@PROTEIN_CHECK)").\
               query("valid_i_name.notna() and valid_ii_name.notna()")
