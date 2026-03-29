@@ -19,13 +19,16 @@ input_option = click.option("-i","--input","input", required = True, type=str, h
 output_option = click.option("-o","--output","output", required = True, type=str, help = "Output directory")
 
 def fix_mhc_name(allele_str, chain = 'alpha'):
+    assert chain in ['alpha','beta'], "Unknown chain"
     try:
         # Предварительные проверки и подготовления
         if pd.isna(allele_str):
             return pd.NA     
         allele_first = allele_str.split(" ")[0]
-        if allele_first == "B2M":
+        if (allele_first == "B2M" or allele_first == "Beta-2-microglobulin") and chain == 'beta':
             return "B2M"
+        elif (allele_first == "B2M" or  allele_first == "Beta-2-microglobulin") and chain == 'alpha':
+            return pd.NA
         # Получение конкретной аллели
         parsed_allele = mhcgnomes.parse(allele_first)
         if isinstance(parsed_allele, mhcgnomes.pair.Pair):
@@ -57,7 +60,13 @@ def fix_mhc_name(allele_str, chain = 'alpha'):
         print(f'Attribute error {allele_first}')
         return pd.NA
 
-
+def get_mhc_species_name(allele):
+    if mhcgnomes.parse(allele).species.name == 'Homo sapiens':
+        return 'human'
+    elif mhcgnomes.parse(allele).species.name == 'Mus musculus':
+        return 'mouse'
+    else:
+        return pd.NA
 
 @click.group()
 def main():
@@ -86,7 +95,6 @@ def mysql(input, output,database):
         raw_data.loc[raw_data[col].str.contains("Mus musculus"),col] = "mouse"
     print("Check mhc names")
 
-    raw_data.loc[raw_data['chain_ii_name'].str.contains("Beta-2-microglobulin"),'chain_ii_name'] = "B2M"
     raw_data['valid_i_name'] = raw_data['chain_i_name'].apply(lambda x: fix_mhc_name(x, 'alpha'))
     raw_data['valid_ii_name'] = raw_data['chain_ii_name'].apply(lambda x: fix_mhc_name(x, 'beta'))
 
@@ -138,7 +146,10 @@ def mysql(input, output,database):
     pivoted_part_pivot.columns = pivoted_part_pivot.columns.to_flat_index().str.join('_')
     pivoted_part_pivot.rename(columns = {"id_":"id", "sequence_alpha":"cdr3_alpha", "sequence_beta":'cdr3_beta'},inplace=True)
     wide = pd.merge(pivoted_part_pivot, annotation_part, on="id")
+    wide['species_mhc_alpha'] = wide['mhc_alpha'].apply(lambda x: get_mhc_species_name(x))
     print("Save")
+    wide = wide.query("species_mhc_alpha == host_species").drop(columns = ['species_mhc_alpha'])
+    print(wide.shape)
     wide.to_csv(os.path.join(output, f"{database}_clean.csv"), sep = ";", index = False)
 
     
@@ -220,8 +231,9 @@ def vdjdb(input, output):
     wide = pd.merge(pivoted_part_pivot, annotation_part, on="id")
     wide["D_alpha"] = pd.NA
     wide["D_beta"] = pd.NA
+    wide['species_mhc_alpha'] = wide['mhc_alpha'].apply(lambda x: get_mhc_species_name(x))
     print("Save")
-    wide.to_csv(os.path.join(output, "VDJdb_clean.csv"), sep = ";", index = False)
+    wide.query("species_mhc_alpha == host_species").drop(columns = ['species_mhc_alpha']).to_csv(os.path.join(output, "VDJdb_clean.csv"), sep = ";", index = False)
 
         
 @main.command()
@@ -284,8 +296,9 @@ def mcpas(input, output):
     clean_data_selected = clean_data_with_id.filter(items = list(table_schema.keys()), axis = 1).rename(columns = table_schema)
     clean_data_selected["D_alpha"] = pd.NA
     
+    clean_data_selected['species_mhc_alpha'] = clean_data_selected['mhc_alpha'].apply(lambda x: get_mhc_species_name(x))
     print("Save")
-    clean_data_selected.to_csv(os.path.join(output, "McPAS_clean.csv"), sep = ";", index = False)
+    clean_data_selected.query("species_mhc_alpha == host_species").drop(columns = ['species_mhc_alpha']).to_csv(os.path.join(output, "McPAS_clean.csv"), sep = ";", index = False)
     
     
 @main.command()
@@ -331,8 +344,10 @@ def pird(input, output):
     clean_data = clean_data.query("mhc_class == 'I'") # no valid mhcII entries
     clean_data["D_alpha"] = pd.NA
     clean_data_selected = clean_data.filter(items = list(table_schema.keys()), axis = 1).rename(columns = table_schema)
+    clean_data_selected['species_mhc_alpha'] = clean_data_selected['mhc_alpha'].apply(lambda x: get_mhc_species_name(x))
+    clean_data_selected['species_mhc_beta'] = clean_data_selected['mhc_beta'].apply(lambda x: get_mhc_species_name(x))
     print("Save")
-    clean_data_selected.to_csv(os.path.join(output, "PIRD_clean.csv"), sep = ";", index = False)
+    clean_data_selected.query("species_mhc_alpha == host_species").drop(columns = ['species_mhc_alpha']).to_csv(os.path.join(output, "PIRD_clean.csv"), sep = ";", index = False)
 
 if __name__ == "__main__":
     main()
