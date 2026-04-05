@@ -21,8 +21,8 @@ def main():
 @click.argument('files', nargs=-1)
 def simple(output, files):
     data = pd.concat([pd.read_csv(f, sep = ";", header = 0) for f in files],ignore_index = True).drop_duplicates(subset = ['cdr3_alpha', 'cdr3_beta', 'epitope', 'mhc_alpha', 'mhc_beta'])
-    data_checked.to_csv(os.path.join(output, "TCR_info_simple_merge.csv"), sep = ";", index=False)
-    print(data_checked.shape)
+    data.to_csv(os.path.join(output, "TCR_info_simple_merge.csv"), sep = ";", index=False)
+    print(data.shape)
     
 @main.command()
 @keep_option
